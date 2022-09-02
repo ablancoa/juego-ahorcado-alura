@@ -1,0 +1,231 @@
+:root{
+    --dark-blue: #0A3871;
+    --dark-blue-400: #052051;
+    --light-blue: #EFF1FA;
+    --light-blue-500: #757FB2;
+    --color-background: #E5E5E5;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Para todas las paginas */
+
+.header{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+}
+
+.alura-icon{
+   margin-left: 5rem; 
+}
+
+/* Area de iniciar juego - index.html */
+
+.main{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btn-begin-game{
+    width: 15rem;
+    height: 3rem;
+    background-color: var(--dark-blue);
+    border: 1px solid var(--dark-blue-400);
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn-begin-game a{
+    color: var(--light-blue);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+}
+
+.btn-add-word{
+    background-color: var(--light-blue);
+    border: 1px solid var(--light-blue-500);
+    border-radius: 8px;
+    width: 13rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.btn-add-word a{
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif
+}
+
+/* Pantalla del juego */
+
+
+.img-container{
+    width: 30%;
+    height: 40vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Partes del cuerpo del muñeco -game.html */
+.general-container{
+    margin: 15px 0;
+}
+
+.munheco{
+    scale: 0.5;
+    position: relative;    
+}
+.base{
+    top: 90px;
+    left: 195px;
+}
+.rama{
+    bottom: 90px;
+    right: 50px;
+}
+.cuerda{
+    bottom: 80px;
+    right: 97px;
+}
+.cabeza{
+    bottom: 54px;
+    right: 132px;
+}
+.cuerpo{
+    right: 167px;
+    bottom: 7px;
+}
+.brazo-derecho{
+    right: 199px;
+    bottom: 25px;
+}
+.brazo-izquierdo{
+    right: 219px;
+    bottom: 25px;
+}
+.pie-derecho{
+    right: 276px;
+    top: 41px;
+}
+.pie-izquierdo{
+    right: 297px;
+    top: 41px;
+}
+
+
+.input-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.input{
+    font-family: Inter;
+    font-size: 2rem;
+    text-align: center;
+    width: 2rem;
+    border: 0;
+    margin-left: 1rem;
+    border-bottom: 2px solid var(--light-blue-500);
+}
+
+.input:focus{
+    outline: none;
+}
+
+.letter-mistakes{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    
+}
+
+.letter-mistakes p{
+    margin: 0 0.5rem 0 0.5rem;
+    font-size: 2rem;
+    color: var(--dark-blue-400);
+}
+
+.button-conatiner{
+    display: flex;
+    justify-content:center;
+    margin: 1rem;
+}
+
+.btn-new-game{
+    width: 150px;
+    padding: 1rem;
+    background-color: var(--dark-blue);
+    border: 1px solid var(--dark-blue-400);
+    border-radius: 8px;
+    color: var(--light-blue);
+    margin-right: 1rem;
+    font-family: Inter;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn-surrender{
+    width: 150px;
+    padding: 1rem;
+    background-color: var(--light-blue);
+    border: 1px solid var(--light-blue-500);
+    border-radius: 8px;
+    color: var(--dark-blue);
+    margin-right: 1rem;
+    font-family: Inter;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    color: var(--dark-blue-400);
+}
+
+.social_link{
+    display: inline-block;
+    margin: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    background-size: 100%;
+}
+
+.social_link.facebook{
+    background-image: url(./img/iconos/facebook.svg);
+}
+
+.social_link.linkedin{
+    background-image: url(./img/iconos/linkedin.svg);
+}
+
+.social_link.instagram{
+    background-image: url(./img/iconos/instagram.svg);
+     
+}
+
+.social_link.github{
+    background-image: url(./img/iconos/github.svg);
+}
