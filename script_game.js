@@ -11,15 +11,6 @@ function selectWord(){
     createLines(secretWord);
 }
 
-{/* <div class="input-container">
-            <input type="text" class="input" maxlength="1"">
-            <input type="text" class="input" maxlength="1"">
-            <input type="text" class="input" maxlength="1"">
-            <input type="text" class="input" maxlength="1"">
-            <input type="text" class="input" maxlength="1"">
-            <input type="text" class="input" maxlength="1"">
-</div> */}
-
 function createLines(palabra){
     let cantidad = Array.from(palabra);
     cantidad.forEach(element => {
@@ -36,5 +27,12 @@ function createLines(palabra){
 let keyword = window.addEventListener('keypress', capturarLetra);
 
 function capturarLetra(event){
-    console.log(String.fromCharCode(event.keyCode));
+    let captura = (String.fromCharCode(event.keyCode));
+    let nuemros = ["1","2","3","4","5","6","7","8","9","0"]
+    if (captura == (nuemros.find(element => element == captura))){
+        console.log("Solo debe ingresar letras");
+    }
+    else if(typeof captura === 'string') {
+        console.log(captura);
+    }
 }
