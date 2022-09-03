@@ -16,9 +16,10 @@ desistir.addEventListener('click',clear);
 // Elegir variable al azar
 const arraySecretWords = ["hola","programa","laptop","codigo"];
 let arrayWord =[];
+let secretWord;
 
 function selectWord(){
-    let secretWord = arraySecretWords[Math.floor(Math.random()*4)];
+    secretWord = arraySecretWords[Math.floor(Math.random()*4)];
     console.log(secretWord);
     arrayWord = startNewGame(secretWord);
 }
@@ -81,18 +82,23 @@ function clear() {
 
 
 function capturarLetra(event){
-    if (event.keyCode == 13){
-        event.preventDefault();
+    if (arrayWord.length == 0){
+        alert("Inicie juego nuevo")
     }
     else{
-        let captura = String.fromCharCode(event.keyCode);
-        let nuemros = ["1","2","3","4","5","6","7","8","9","0"]
-        if (captura == (nuemros.find(element => element == captura))){
-            alert("Solo debe ingresar letras");
+
+        if (event.keyCode == 13){
+            event.preventDefault();
         }
-        else if (captura == " " || captura == ""){
-            newGame.blur();  
-        }
+        else{
+            let captura = String.fromCharCode(event.keyCode);
+            let nuemros = ["1","2","3","4","5","6","7","8","9","0"]
+            if (captura == (nuemros.find(element => element == captura))){
+                alert("Solo debe ingresar letras");
+            }
+            else if (captura == " " || captura == ""){
+                newGame.blur();  
+            }
         else if(typeof captura === 'string') {
             let compareId = idLetras();
             let valueInput; 
@@ -118,10 +124,14 @@ function capturarLetra(event){
                     if(erroresCometidos != idImagenes.length){
                         idImagenes[erroresCometidos-1].classList.remove('inactive')
                     }
+                    else if(erroresCometidos == idImagenes.length){
+                        idImagenes[erroresCometidos-1].classList.remove('inactive')
+                        alert(`Usted perdio la palabra era ${secretWord}`)  
+                    }
                 }
             }
         }
-
+        
     }
-    
-}
+        
+}}
