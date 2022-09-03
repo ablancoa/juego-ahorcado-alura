@@ -17,10 +17,19 @@ function createLines(palabra){
         const letra = document.createElement('p')
         letra.setAttribute('id',element);
         letra.classList.add('input')
-
         inputContainer.appendChild(letra);
     });
 
+}
+// Array con los id de todas las letras
+let idLetras = function(){
+    let letras = document.getElementsByClassName('input');
+    let objectLetras = Object.values(letras);
+    let arrayId =[];
+    objectLetras.map( element => {
+        arrayId.push(element.id)
+    });
+    return arrayId
     
 }
 
@@ -30,9 +39,12 @@ function capturarLetra(event){
     let captura = (String.fromCharCode(event.keyCode));
     let nuemros = ["1","2","3","4","5","6","7","8","9","0"]
     if (captura == (nuemros.find(element => element == captura))){
-        console.log("Solo debe ingresar letras");
+        alert("Solo debe ingresar letras");
     }
     else if(typeof captura === 'string') {
         console.log(captura);
+    }
+    else{
+        console.log("Solo debe ingresar letras");
     }
 }
