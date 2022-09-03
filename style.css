@@ -83,6 +83,10 @@ body {
     align-items: center;
 }
 
+.inactive{
+    visibility: hidden;
+}
+
 /* Partes del cuerpo del muñeco -game.html */
 .general-container{
     margin: 15px 0;
@@ -134,7 +138,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
+    height: 3rem;
 }
 
 .input{
@@ -143,6 +148,8 @@ body {
     text-align: center;
     width: 2rem;
     border: 0;
+    padding-top: 1rem;
+    margin: 0;
     margin-left: 1rem;
     border-bottom: 2px solid var(--light-blue-500);
 }
@@ -155,7 +162,7 @@ body {
     display: flex;
     justify-content: center;
     margin: 1rem 0;
-    
+    height: 3rem;
 }
 
 .letters{
