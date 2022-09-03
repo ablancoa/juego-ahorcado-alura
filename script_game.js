@@ -62,6 +62,7 @@ function clear() {
 
 
 let keyword = window.addEventListener('keypress', capturarLetra);
+const letrasErrada = [];
 
 function capturarLetra(event){
     if (event.keyCode == 13){
@@ -74,13 +75,11 @@ function capturarLetra(event){
             alert("Solo debe ingresar letras");
         }
         else if (captura == " " || captura == ""){
-            newGame.blur(); 
-            
+            newGame.blur();  
         }
         else if(typeof captura === 'string') {
             let compareId = idLetras();
-            let valueInput;
-            const letrasErrada =[]; 
+            let valueInput; 
             if (arrayWord.includes(captura))
             for (let i = 0; i < arrayWord.length; i++){
                 if (captura == arrayWord[i]){
@@ -89,10 +88,17 @@ function capturarLetra(event){
                 }
             }
             else{
-                const errorLetra = document.createElement('p');
-                errorLetra.classList.add('letters');
-                errorEntrado.appendChild(errorLetra)
-                errorLetra.innerText = captura;
+                console.log(letrasErrada);
+                if (letrasErrada.includes(captura)){
+                    alert("Esa letra ya fue ingresada")
+                }
+                else{
+                    letrasErrada.push(captura)
+                    const errorLetra = document.createElement('p');
+                    errorLetra.classList.add('letters');
+                    errorEntrado.appendChild(errorLetra)
+                    errorLetra.innerText = captura;
+                }
             }
         }
 
