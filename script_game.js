@@ -5,6 +5,9 @@ const errorEntrado = document.querySelector('.letter-mistakes');
 const desistir = document.querySelector('.btn-surrender');
 let idImagenes = document.getElementsByClassName('munheco');
 
+// Cargando array de palabras en modules
+import { arraySecretWords }  from './modules/palabras.js';
+
 let keyword = window.addEventListener('keypress', capturarLetra);
 const letrasErrada = [];
 let erroresCometidos = 0;
@@ -14,7 +17,7 @@ desistir.addEventListener('click',clear);
 
 
 // Elegir variable al azar
-const arraySecretWords = ["hola","programa","laptop","codigo"];
+
 let arrayWord =[];
 let secretWord;
 
