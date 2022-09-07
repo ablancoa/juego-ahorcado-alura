@@ -58,11 +58,18 @@ let arrayDB = function () { //Array con todas las palabras
 
 // Elegir variable al azar
 let arrayDBlarge = arrayDB().length
+let fastWordStorage = sessionStorage.getItem("fastWord");
 
 function selectWord(){
-    secretWord = arrayDB()[Math.round(Math.random()*arrayDBlarge)]
+    if (fastWordStorage == ""){
+        secretWord = arrayDB()[Math.round(Math.random()*arrayDBlarge)]
+    
+    }else{
+        secretWord = fastWordStorage;
+    }
     console.log(secretWord);
     arrayWord = startNewGame(secretWord);
+    sessionStorage.setItem("fastWord", "")
 }
 
 // Array con los id de todas las letras
@@ -80,7 +87,8 @@ let idLetras = function(){
 
 // Funcion de crear las letras
 function startNewGame(palabra){
-    clear()
+    clear();
+    crearTeclado();
     let cantidad = Array.from(palabra);
     let id = 0;
     cantidad.forEach(element => {
@@ -119,8 +127,80 @@ function clear() {
     while (letrasErase[0]){
         letrasErase[0].parentNode.removeChild(letrasErase[0]);
     }
+    // Para limpiar el fastWord
+    fastWordStorage = "";
+    letrasAcertadas = 0;
 }
 
+function crearTeclado() {
+    const letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z",];
+
+    letras.forEach(element => {
+        const letraTeclado = document.createElement('p')
+        letraTeclado.setAttribute('id',element);
+        letraTeclado.classList.add('letters')
+        letraTeclado.innerText = element
+        errorEntrado.appendChild(letraTeclado);
+       
+    })
+    document.querySelectorAll(".letters").forEach(el => {
+        el.addEventListener("click", e => {
+            const id = e.target.getAttribute("id");
+            verifyIsLetraExist(id);
+        });
+    })
+    
+    
+}
+
+function verifyIsLetraExist(letra) {
+    let compareId = idLetras();
+    let valueInput;
+    let letraYaIngresada = document.getElementById(letra);
+    letraYaIngresada.classList.add('block-letter')
+    if (letrasErrada.includes(letra)){
+        alert("Esa letra ya fue ingresada")
+    }
+    else{
+        //Letra errada ya ingresada
+        if (arrayWord.includes(letra)){
+            for (let i = 0; i < arrayWord.length; i++){
+                if (letra == arrayWord[i]){
+                    valueInput = document.getElementById(compareId[i]);
+                    valueInput.innerText = letra;
+                    letrasAcertadas++
+                    if (letrasAcertadas == idLetras().length){
+                        Swal.fire(
+                            'Buen trabajo!',
+                            'Usted ganó!',
+                            'Exito'
+                        )
+                    }
+                }
+            }
+            letrasErrada.push(letra);
+        } 
+        else{
+            letrasErrada.push(letra) //Ingresar nueva letra errada
+            // const errorLetra = document.createElement('p');
+            // errorLetra.classList.add('letters');
+            // errorEntrado.appendChild(errorLetra)
+            // errorLetra.innerText = letra;
+            erroresCometidos++    
+            if(erroresCometidos != idImagenes.length){
+                idImagenes[erroresCometidos-1].classList.remove('inactive')
+            }
+            else if(erroresCometidos == idImagenes.length){
+                idImagenes[erroresCometidos-1].classList.remove('inactive')
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Oops...',
+                    text: `Usted perdio la palabra era ${secretWord}`,
+                })  
+            }
+        }
+    }
+}
 
 
 function capturarLetra(event){
@@ -142,52 +222,12 @@ function capturarLetra(event){
             else if (captura == " " || captura == ""){ //Evitar que no se entren espacios
                 newGame.blur();  
             }
-        else if(typeof captura === 'string') {
-            let compareId = idLetras();
-            let valueInput; 
-            if (arrayWord.includes(captura)) //Escribir letra acertada
-            for (let i = 0; i < arrayWord.length; i++){
-                if (captura == arrayWord[i]){
-                    valueInput = document.getElementById(compareId[i]);
-                    valueInput.innerText = captura;
-                    letrasAcertadas++
-                    if (letrasAcertadas == idLetras().length){
-                        Swal.fire(
-                            'Buen trabajo!',
-                            'Usted gano!',
-                            'Exito'
-                        )
-                    }
-                }
-            }
-            else{
-                 //Letra errada ya ingresada
-                if (letrasErrada.includes(captura)){
-                    alert("Esa letra ya fue ingresada")
-                }
-                else{
-                    letrasErrada.push(captura) //Ingresar nueva letra errada
-                    const errorLetra = document.createElement('p');
-                    errorLetra.classList.add('letters');
-                    errorEntrado.appendChild(errorLetra)
-                    errorLetra.innerText = captura;
-                    erroresCometidos++    
-                    if(erroresCometidos != idImagenes.length){
-                        idImagenes[erroresCometidos-1].classList.remove('inactive')
-                    }
-                    else if(erroresCometidos == idImagenes.length){
-                        idImagenes[erroresCometidos-1].classList.remove('inactive')
-                        Swal.fire({
-                            icon: 'info',
-                            title: 'Oops...',
-                            text: `Usted perdio la palabra era ${secretWord}`,
-                          })  
-                    }
-                }
+            else if(typeof captura === 'string') { 
+                verifyIsLetraExist(captura);
             }
         }
         
     }
         
-}}
+}
 
