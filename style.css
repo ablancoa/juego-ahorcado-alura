@@ -9,6 +9,7 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
+    
 }
 
 /* Para todas las paginas */
@@ -27,10 +28,30 @@ body {
 /* Area de iniciar juego - index.html */
 
 .main-container{
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 325px;
+}
+
+.main-container-index{
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 75vh;
+    min-width: 325px;
+}
+
+.new-word-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    gap: 1rem;
+    min-width: 325px;
 }
 
 .button-container{
@@ -39,6 +60,12 @@ body {
     padding: 2rem;
     align-items: center;
     gap: 2rem;
+    
+}
+
+.border{
+    border: 1px solid var(--dark-blue-400);
+    border-radius: 8px;
 }
 
 .btn-begin-game{
@@ -63,6 +90,15 @@ body {
     color: var(--dark-blue-400);
 }
 
+.juego-rapido{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+    gap: 2rem;
+    border: 1px solid var(--dark-blue-400);
+    border-radius: 8px;
+}
 
 /* Pantalla del juego */
 .img-container{
@@ -76,6 +112,12 @@ body {
 
 .inactive{
     visibility: hidden;
+}
+
+.block-letter{
+    background-color: #0A3871;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 /* Partes del cuerpo del muñeco -game.html */
@@ -151,15 +193,27 @@ body {
 
 .letter-mistakes{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 1rem 0;
-    height: 3rem;
 }
 
 .letters{
-    margin: 0 0.5rem 0 0.5rem;
-    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.2rem;
+    font-size: 1rem;
     color: var(--dark-blue-400);
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--dark-blue-400);
+    border-radius: 8px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.letters:hover{
+    background-color: #757FB2;
 }
 
 .button-conatiner{
@@ -220,6 +274,10 @@ body {
     justify-content: space-between;
     padding: 0 1rem;
     color: var(--dark-blue-400);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .social_link{

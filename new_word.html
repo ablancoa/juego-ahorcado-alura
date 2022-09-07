@@ -15,10 +15,16 @@
     <header class="header">
         <img src="./img/iconos/Vector.svg" alt="Icono de Alura" class="alura-icon">     
     </header>
-    <main class="main-container">
-        <div class="button-container">
-            <input type="text" class="input-new-word">
-            <input type="submit" class="btn-begin-game" value="Ingrese nueva palabra"></button>
+    <main class="new-word-container">
+        <div class="button-container border">
+            <input id="new-word-input" type="text" class="input-new-word" placeholder="Palabra nueva"  pattern="^[A-Za-z]+$" maxlength="10">
+            <span>Agregar palabra a la base de datos</span>
+            <input id="add-new-word" type="submit" class="btn-begin-game" value="Ingrese nueva palabra"></button>
+        </div>
+        <div class="juego-rapido border">
+            <input id="new-fast-word" type="text" class="input-new-word" placeholder="Palabra"  pattern="^[A-Za-z]+$" maxlength="10">
+            <span>Agregar palabra para juego rápido</span>
+            <input id="new-fast-game" type="submit" class="btn-begin-game" value="Juego rápido">
         </div>
     </main>
     <footer class="footer">
