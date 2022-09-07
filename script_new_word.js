@@ -1,5 +1,7 @@
-const inputNewWord = document.querySelector('.input-new-word');
-const buttonNewWord = document.querySelector('.btn-begin-game');
+const inputNewWord = document.querySelector('#new-word-input');
+const buttonNewWord = document.querySelector('#add-new-word');
+const inputFastWord = document.querySelector('#new-fast-word');
+const buttonFastGame = document.querySelector('#new-fast-game');
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
@@ -31,6 +33,7 @@ const db = getFirestore(app);
 
 //Eventos y constantes del database
 buttonNewWord.addEventListener('click',actualizarData);
+buttonFastGame.addEventListener('click',startFastGame);
 const docRef = doc(db, "words", "prueba");
 let docSnap = await getDoc(docRef);
 
@@ -41,7 +44,14 @@ const wordsRef = collection(db, "words")
 // PARA ACTUALIZAR LA BASE DE DATOS
 function actualizarData (){
   let a = inputNewWord.value.toUpperCase();
-  if (inputNewWord.value != "" && inputNewWord.value != " "){
+  if (!inputNewWord.checkValidity()){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Solo se pueden insertar letras',
+    })
+  }
+  else{
     try {
       updateDoc(docRef, {
         palabra: arrayUnion(a)
@@ -63,7 +73,24 @@ function actualizarData (){
   
 }
 
-
+function startFastGame() {
+  if(!inputFastWord.checkValidity()) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Solo se pueden insertar letras',
+    })
+  } else {
+    let fastWord = inputFastWord.value;
+    sessionStorage.setItem("fastWord", fastWord.toUpperCase());
+    Swal.fire(
+      'Buen trabajo!',
+      'La palabra a sido agregada!',
+      'Exito'
+    )
+  }
+}
+  
 
 
 //-----------------------------------------Codigo de referencia------------------------------------------------------
