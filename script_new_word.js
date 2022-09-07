@@ -4,9 +4,10 @@ const buttonNewWord = document.querySelector('.btn-begin-game');
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
-import { collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
+import { collection, query, where } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
-import { getDoc } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
+import { getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
+import { updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js"
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -30,37 +31,63 @@ const db = getFirestore(app);
 
 //Eventos y constantes del database
 buttonNewWord.addEventListener('click',actualizarData);
-let arrayBase;
 const docRef = doc(db, "words", "prueba");
-const docSnap = await getDoc(docRef);
+let docSnap = await getDoc(docRef);
 
-// Add a new document in collection "cities" Metodo para verificar si existe y modificarlo. Sino crear uno nuevo
-function addWord () {
-  setDoc(doc(db, "words", "prueba"), {
-    palabra: arrayBase,
-});
-}
-
-// Para obtener los datos de la bd Coleccion words, documentID prueba
-function descargarData () {
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data().palabra);
-    arrayBase = docSnap.data().palabra;
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-  }
-
-}
+// Consulta a la base de datos
+const wordsRef = collection(db, "words")
 
 
 // PARA ACTUALIZAR LA BASE DE DATOS
 function actualizarData (){
-  descargarData()
-  arrayBase.push(inputNewWord.value);
-  addWord()
-  console.log("Document data:", docSnap.data().palabra);
+  let a = inputNewWord.value.toUpperCase();
+  if (inputNewWord.value != "" && inputNewWord.value != " "){
+    try {
+      updateDoc(docRef, {
+        palabra: arrayUnion(a)
+      })
+      Swal.fire(
+        'Buen trabajo!',
+        'La palabra a sido agregada!',
+        'Exito'
+      )
+    }catch (e) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      })
+      console.error("Error adding document: ", e);
+    }
+  }
+  
 }
+
+
+
+
+//-----------------------------------------Codigo de referencia------------------------------------------------------
+
+// // Add a new document in collection "cities" Metodo para verificar si existe y modificarlo. Sino crear uno nuevo
+// function addWord () {
+//   setDoc(doc(db, "words", "prueba"), {
+//     palabra: arrayBase,
+// });
+// }
+
+// // Para obtener los datos de la bd Coleccion words, documentID prueba
+// let docSnap = await getDoc(docRef);
+// function descargarData () {
+//   if (docSnap.exists()) {
+//     console.log("Document data:", docSnap.data().palabra);
+//     arrayBase = docSnap.data().palabra;
+//   } else {
+//     // doc.data() will be undefined in this case
+//     console.log("No such document!");
+//   }
+
+// }
+
 
 // //PARA RECORRER TODOS LOS ELEMENTOS DEL OBJETO EN EL DB
 // const querySnapshot = await getDocs(collection(db, "words")); // El await es una promesa y solo se utiliza en el scope global 
