@@ -242,7 +242,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin: 1rem 0;
-    height: 2rem;
+    min-height: 2rem;
 }
 
 .letters{
