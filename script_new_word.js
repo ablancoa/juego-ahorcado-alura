@@ -97,7 +97,7 @@ function startFastGame() {
       sessionStorage.setItem("fastWord", fastWord.toUpperCase());
       Swal.fire(
         'Buen trabajo!',
-        'La palabra a sido agregada!',
+        'La palabra a sido agregada, ya puede ir al juego!',
         'Exito'
       )
     }

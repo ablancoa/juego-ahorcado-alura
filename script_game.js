@@ -17,7 +17,7 @@ newGame.addEventListener('click',selectWord);
 desistir.addEventListener('click',clear);
 agregarPalabra.addEventListener('click',() => {window.open("./new_word.html","_self")})
 window.addEventListener('keypress', capturarLetra);
-
+newGame.classList.add('inactive');
 //------------------------------------------------------------------------------------------------------------
 // Cargando array de palabras en modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
@@ -43,6 +43,7 @@ const db = getFirestore(app);
 const docRef = doc(db, "words", "prueba");
 const docSnap = await getDoc(docRef);
 
+newGame.classList.remove('inactive');
 let arrayDB = function () { //Array con todas las palabras
     let dataArray;
     if (docSnap.exists()) {
@@ -65,7 +66,7 @@ let fastWordStorage = sessionStorage.getItem("fastWord");
 function selectWord(){
     if (fastWordStorage == ""){
         secretWord = arrayDB()[Math.round(Math.random()*arrayDBlarge)]
-    
+        
     }else{
         secretWord = fastWordStorage;
     }
