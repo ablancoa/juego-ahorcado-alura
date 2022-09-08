@@ -9,16 +9,22 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
+    min-width: 325px;
     
 }
 
 /* Para todas las paginas */
 
 .header{
-    width: 100%;
+    width: 95%;
     height: 15vh;
     display: flex;
     align-items: center;
+}
+
+.addWord{
+    justify-content: space-between;
+    margin-left: 1rem;
 }
 
 .alura-icon{
@@ -44,14 +50,19 @@ body {
     min-width: 325px;
 }
 
+.main-new-word-container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
 .new-word-container{
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     align-items: center;
     justify-content: center;
-    height: 75vh;
     gap: 1rem;
-    min-width: 325px;
+    min-height: 60vh;
 }
 
 .button-container{
@@ -69,15 +80,23 @@ body {
 }
 
 .btn-begin-game{
+    position: relative;
+    font-size: 1.2rem;
     width: 15rem;
-    height: 3rem;
+    letter-spacing: 3px;
+    height: 3em;
+    padding: 0 3em;
+    border: none;
     background-color: var(--dark-blue);
-    border: 1px solid var(--dark-blue-400);
+    color: #fff;
+    text-transform: uppercase;
+    overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
-    color: var(--light-blue);
+}
+
+.label {
     font-family: 'Inter';
-    font-size: 1.2rem;
 }
 
 .btn-add-word{
@@ -88,6 +107,7 @@ body {
     height: 2rem;
     cursor: pointer;
     color: var(--dark-blue-400);
+    transition: 0.5s;
 }
 
 .juego-rapido{
@@ -100,10 +120,36 @@ body {
     border-radius: 8px;
 }
 
+.btn-insert-word{
+    width: 100%;
+    height: 3rem;
+    background-color: var(--dark-blue);
+    border: 1px solid var(--dark-blue-400);
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--light-blue);
+    font-family: 'Inter';
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.goToGame{
+    width: 350px;
+    height: 3rem;
+    background-color: var(--dark-blue);
+    border: 1px solid var(--dark-blue-400);
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--light-blue);
+    font-family: 'Inter';
+    font-size: 1.2rem;
+    margin: 1rem auto;
+}
+
 /* Pantalla del juego */
 .img-container{
     width: 30%;
-    height: 40vh;
+    height: 45vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -212,9 +258,7 @@ body {
     transition: 0.2s;
     cursor: pointer;
 }
-.letters:hover{
-    background-color: #757FB2;
-}
+
 
 .button-conatiner{
     display: flex;
@@ -252,7 +296,108 @@ body {
     cursor: pointer;
 }
 
+/* Boton de ir atras a agregar palabras en pantalla de juego -------------------------------------------*/
+.icon-btn {
+width: 50px;
+height: 50px;
+border: 1px solid #cdcdcd;
+background: white;
+border-radius: 25px;
+overflow: hidden;
+position: relative;
+transition: width 0.2s ease-in-out;
+font-weight: 500;
+font-family: inherit;
+cursor: pointer;
+}
+
+.add-btn:hover {
+width: 140px;
+}
+
+.add-btn::before,
+.add-btn::after {
+transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+content: "";
+position: absolute;
+height: 4px;
+width: 10px;
+top: calc(50% - 2px);
+background: var(--dark-blue);
+}
+
+.add-btn::after {
+right: 14px;
+overflow: hidden;
+border-top-right-radius: 2px;
+border-bottom-right-radius: 2px;
+}
+
+.add-btn::before {
+left: 14px;
+border-top-left-radius: 2px;
+border-bottom-left-radius: 2px;
+}
+
+.icon-btn:focus {
+outline: none;
+}
+
+.btn-txt {
+opacity: 0;
+transition: opacity 0.2s;
+}
+
+.add-btn:hover::before,
+.add-btn:hover::after {
+width: 4px;
+border-radius: 2px;
+}
+
+.add-btn:hover .btn-txt {
+opacity: 1;
+}
+
+.add-icon::after,
+.add-icon::before {
+transition: all 0.2s ease-in-out;
+content: "";
+position: absolute;
+height: 20px;
+width: 2px;
+top: calc(50% - 10px);
+background: var(--dark-blue);
+overflow: hidden;
+}
+
+.add-icon::before {
+left: 22px;
+border-top-left-radius: 2px;
+border-bottom-left-radius: 2px;
+}
+
+.add-icon::after {
+right: 22px;
+border-top-right-radius: 2px;
+border-bottom-right-radius: 2px;
+}
+
+.add-btn:hover .add-icon::before {
+left: 15px;
+height: 4px;
+top: calc(50% - 2px);
+}
+
+.add-btn:hover .add-icon::after {
+right: 15px;
+height: 4px;
+top: calc(50% - 2px);
+}
+
+/* --------------------------------------Fin del boton-------------------------------------------------------- */
+
 .input-new-word{
+    width: 100%;
     font-family: Inter;
     font-size: 1.5rem;
     text-align: center;
@@ -267,6 +412,8 @@ body {
     outline: none;
 }
 
+
+
 /* Footer */
 .footer{
     display: flex;
@@ -274,7 +421,6 @@ body {
     justify-content: space-between;
     padding: 0 1rem;
     color: var(--dark-blue-400);
-    position: absolute;
     bottom: 0px;
     width: 100%;
     box-sizing: border-box;
@@ -303,4 +449,120 @@ body {
 
 .social_link.github{
     background-image: url(./img/iconos/github.svg);
+}
+
+@media (max-width: 600px){
+    .main-container-index{
+        height: 70vh;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .btn-begin-game, .btn-add-word{
+        width: 100%;
+    }
+    .new-word-container{
+        display: block;
+        height: 100%;
+        width: 90%;
+        margin: 0 auto;
+
+    }
+    .input-new-word{
+        width: 100%;
+    }
+    .border{
+        margin-bottom: 0.5rem;
+    }
+    .main-container{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .button-conatiner{
+        display: block;
+    }
+    .btn-new-game{
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    .btn-surrender{
+        width: 100%;
+    }
+    .goToGame{
+        width: 90%;
+    }
+}
+
+@media (min-width: 601px){
+    .letters:hover{
+        background-color: #757FB2;
+    }
+
+    .btn-add-word:hover{
+        transition: 0.5s;
+        scale: 105%;
+    }
+
+    .btn-begin-game:hover{
+        transition: 0.5s;
+        scale: 105%;
+    }
+
+    .btn-begin-game::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    height: 0px;
+    width: 100%;
+    background: var(--light-blue-500);
+    background: linear-gradient(90deg, var(--dark-blue) 20%, var(--dark-blue-400) 100%);
+    transition: 0.2s;
+    }
+    
+    .btn-begin-game .label {
+    position: relative;
+    }
+    
+    .btn-begin-game .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3em;
+    width: 3em;
+    position: absolute;
+    top: 3em;
+    right: 0;
+    opacity: 0;
+    transition: 0.4s;
+    }
+    
+    .btn-begin-game:hover::before {
+    height: 100%;
+    }
+    
+    .btn-begin-game:hover .icon {
+    top: 0;
+    opacity: 1;
+    }
+
+    .btn-insert-word:hover {
+        transition: 0.5s;
+        scale: 105%;
+    }
+    .goToGame:hover{
+        transition: 0.5s;
+        scale: 105%;
+    }
+
+    .btn-new-game:hover{
+        transition: 0.5s;
+        scale: 105%;
+    }
+    .btn-surrender:hover{
+        transition: 0.5s;
+        scale: 105%;
+    }
 }

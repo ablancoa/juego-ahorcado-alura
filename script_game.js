@@ -4,6 +4,7 @@ const inputContainer = document.querySelector('.input-container');
 const errorEntrado = document.querySelector('.letter-mistakes');
 const desistir = document.querySelector('.btn-surrender');
 let idImagenes = document.getElementsByClassName('munheco');
+const agregarPalabra = document.querySelector('.icon-btn');
 
 
 let arrayWord =[]; //Array de la palabra a adivinar
@@ -14,6 +15,7 @@ let erroresCometidos = 0;
 
 newGame.addEventListener('click',selectWord);
 desistir.addEventListener('click',clear);
+agregarPalabra.addEventListener('click',() => {window.open("./new_word.html","_self")})
 window.addEventListener('keypress', capturarLetra);
 
 //------------------------------------------------------------------------------------------------------------
@@ -159,7 +161,11 @@ function verifyIsLetraExist(letra) {
     let letraYaIngresada = document.getElementById(letra);
     letraYaIngresada.classList.add('block-letter')
     if (letrasErrada.includes(letra)){
-        alert("Esa letra ya fue ingresada")
+        Swal.fire({
+            icon: 'info',
+            title: 'Error',
+            text: `Letra ya insertada`,
+        }) 
     }
     else{
         //Letra errada ya ingresada
@@ -193,7 +199,7 @@ function verifyIsLetraExist(letra) {
             else if(erroresCometidos == idImagenes.length){
                 idImagenes[erroresCometidos-1].classList.remove('inactive')
                 Swal.fire({
-                    icon: 'info',
+                    icon: 'error',
                     title: 'Oops...',
                     text: `Usted perdio la palabra era ${secretWord}`,
                 })  

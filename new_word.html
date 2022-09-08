@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/png" href="./img/iconos/icon-cuerda.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
@@ -15,17 +16,20 @@
     <header class="header">
         <img src="./img/iconos/Vector.svg" alt="Icono de Alura" class="alura-icon">     
     </header>
-    <main class="new-word-container">
-        <div class="button-container border">
-            <input id="new-word-input" type="text" class="input-new-word" placeholder="Palabra nueva"  pattern="^[A-Za-z]+$" maxlength="10">
-            <span>Agregar palabra a la base de datos</span>
-            <input id="add-new-word" type="submit" class="btn-begin-game" value="Ingrese nueva palabra"></button>
+    <main class="main-new-word-container">
+        <div class="new-word-container">
+            <div class="button-container border">
+                <input id="new-word-input" type="text" class="input-new-word" placeholder="Palabra nueva"  pattern="^[A-Za-z]+$" maxlength="10">
+                <span>Agregar palabra a la base de datos</span>
+                <input id="add-new-word" type="submit" class="btn-insert-word" value="Ingrese nueva palabra"></button>
+            </div>
+            <div class="juego-rapido border">
+                <input id="new-fast-word" type="text" class="input-new-word" placeholder="Palabra"  pattern="^[A-Za-z]+$" maxlength="10">
+                <span>Agregar palabra para juego rápido</span>
+                <input id="new-fast-game" type="submit" class="btn-insert-word" value="Juego rápido">
+            </div>    
         </div>
-        <div class="juego-rapido border">
-            <input id="new-fast-word" type="text" class="input-new-word" placeholder="Palabra"  pattern="^[A-Za-z]+$" maxlength="10">
-            <span>Agregar palabra para juego rápido</span>
-            <input id="new-fast-game" type="submit" class="btn-begin-game" value="Juego rápido">
-        </div>
+        <button class="goToGame">Ir al juego</button>
     </main>
     <footer class="footer">
         <p class="designed-by">Deisigned by Alexander Blanco</p>
