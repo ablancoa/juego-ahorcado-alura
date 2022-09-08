@@ -43,10 +43,11 @@ const db = getFirestore(app);
 const docRef = doc(db, "words", "prueba");
 const docSnap = await getDoc(docRef);
 
-newGame.classList.remove('inactive');
+
 let arrayDB = function () { //Array con todas las palabras
     let dataArray;
     if (docSnap.exists()) {
+        newGame.classList.remove('inactive');
         console.log("Document data:", docSnap.data().palabra);
         dataArray = docSnap.data().palabra;
     } else {
@@ -237,4 +238,6 @@ function capturarLetra(event){
     }
         
 }
+
+
 
