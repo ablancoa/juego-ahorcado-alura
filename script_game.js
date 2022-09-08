@@ -47,9 +47,9 @@ const docSnap = await getDoc(docRef);
 let arrayDB = function () { //Array con todas las palabras
     let dataArray;
     if (docSnap.exists()) {
-        newGame.classList.remove('inactive');
         console.log("Document data:", docSnap.data().palabra);
         dataArray = docSnap.data().palabra;
+        newGame.classList.remove('inactive');
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
