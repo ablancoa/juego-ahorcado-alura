@@ -149,7 +149,7 @@ body {
 /* Pantalla del juego */
 .img-container{
     width: 30%;
-    height: 45vh;
+    height: 40vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
