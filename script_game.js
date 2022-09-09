@@ -73,7 +73,7 @@ function selectWord(){
     }else{
         secretWord = fastWordStorage;    
     }
-    // arrayWord = startNewGame(secretWord);
+    arrayWord = startNewGame(secretWord);
     sessionStorage.setItem("fastWord", "")
     
 }
