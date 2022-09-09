@@ -496,6 +496,9 @@ top: calc(50% - 2px);
     .goToGame{
         width: 90%;
     }
+    .footer{
+        flex-direction: column;
+    }
 }
 
 @media (min-width: 601px){

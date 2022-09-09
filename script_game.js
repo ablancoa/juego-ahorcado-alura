@@ -6,9 +6,6 @@ const desistir = document.querySelector('.btn-surrender');
 let idImagenes = document.getElementsByClassName('munheco');
 const agregarPalabra = document.querySelector('.icon-btn');
 
-// Desactivar botones hasta cargar BD
-newGame.classList.add('inactive');
-desistir.classList.add('inactive');
 
 //------------------------------------------------------------------------------------------------------------
 // Cargando array de palabras en modules
@@ -68,24 +65,17 @@ newGame.addEventListener('click',selectWord);
 let arrayDBlarge = arrayDB().length
 let fastWordStorage = sessionStorage.getItem("fastWord");
 
-// Activar botones despues de cargar BD
-newGame.classList.remove('inactive');
-desistir.classList.remove('inactive');
-
 function selectWord(){
-    if (fastWordStorage == ""){
-        secretWord = arrayDB()[Math.round(Math.random()*arrayDBlarge)]
-        if (secretWord == "null"){
-            alert("Espere")
-        }
-        
-    }else{
-        secretWord = fastWordStorage;
-    }
-    console.log(secretWord);
-    arrayWord = startNewGame(secretWord);
-    sessionStorage.setItem("fastWord", "")
 
+    let BD = arrayDB();
+    if (fastWordStorage == "" || fastWordStorage == " " || fastWordStorage == "null" || fastWordStorage == null){
+        secretWord = BD[Math.round(Math.random()*arrayDBlarge)]  
+    }else{
+        secretWord = fastWordStorage;    
+    }
+    // arrayWord = startNewGame(secretWord);
+    sessionStorage.setItem("fastWord", "")
+    
 }
 
 // Array con los id de todas las letras
@@ -250,3 +240,6 @@ function capturarLetra(event){
     }
         
 }
+// Activar botones despues de cargar BD
+newGame.classList.remove('inactive');
+desistir.classList.remove('inactive');
