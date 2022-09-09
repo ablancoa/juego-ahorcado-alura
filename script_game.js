@@ -6,18 +6,10 @@ const desistir = document.querySelector('.btn-surrender');
 let idImagenes = document.getElementsByClassName('munheco');
 const agregarPalabra = document.querySelector('.icon-btn');
 
-
-let arrayWord =[]; //Array de la palabra a adivinar
-let secretWord;
-const letrasErrada = []; //Letras equivocadas
-let letrasAcertadas = 0;
-let erroresCometidos = 0;
-
-newGame.addEventListener('click',selectWord);
-desistir.addEventListener('click',clear);
-agregarPalabra.addEventListener('click',() => {window.open("./new_word.html","_self")})
-window.addEventListener('keypress', capturarLetra);
+// Desactivar botones hasta cargar BD
 newGame.classList.add('inactive');
+desistir.classList.add('inactive');
+
 //------------------------------------------------------------------------------------------------------------
 // Cargando array de palabras en modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
@@ -43,13 +35,11 @@ const db = getFirestore(app);
 const docRef = doc(db, "words", "prueba");
 const docSnap = await getDoc(docRef);
 
-
 let arrayDB = function () { //Array con todas las palabras
     let dataArray;
     if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data().palabra);
+        // console.log("Document data:", docSnap.data().palabra);
         dataArray = docSnap.data().palabra;
-        newGame.classList.remove('inactive');
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
@@ -58,15 +48,36 @@ let arrayDB = function () { //Array con todas las palabras
   
 }
 
+
 //----------------------------------------------------------------------------------------------------------------------
+
+let arrayWord =[]; //Array de la palabra a adivinar
+let secretWord;
+const letrasErrada = []; //Letras equivocadas
+let letrasAcertadas = 0;
+let erroresCometidos = 0;
+
+
+desistir.addEventListener('click',clear);
+agregarPalabra.addEventListener('click',() => {window.open("./new_word.html","_self")})
+window.addEventListener('keypress', capturarLetra);
+newGame.addEventListener('click',selectWord);
+
 
 // Elegir variable al azar
 let arrayDBlarge = arrayDB().length
 let fastWordStorage = sessionStorage.getItem("fastWord");
 
+// Activar botones despues de cargar BD
+newGame.classList.remove('inactive');
+desistir.classList.remove('inactive');
+
 function selectWord(){
     if (fastWordStorage == ""){
         secretWord = arrayDB()[Math.round(Math.random()*arrayDBlarge)]
+        if (secretWord == "null"){
+            alert("Espere")
+        }
         
     }else{
         secretWord = fastWordStorage;
@@ -74,6 +85,7 @@ function selectWord(){
     console.log(secretWord);
     arrayWord = startNewGame(secretWord);
     sessionStorage.setItem("fastWord", "")
+
 }
 
 // Array con los id de todas las letras
@@ -203,7 +215,7 @@ function verifyIsLetraExist(letra) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: `Usted perdio la palabra era ${secretWord}`,
+                    text: `Usted perdio, la palabra era ${secretWord}`,
                 })  
             }
         }
@@ -238,6 +250,3 @@ function capturarLetra(event){
     }
         
 }
-
-
-
