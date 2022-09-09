@@ -70,9 +70,7 @@ body {
     flex-direction: column;
     padding: 2rem;
     align-items: center;
-    gap: 2rem;
-    width: 50%;
-    
+    gap: 2rem;    
 }
 
 .border{
@@ -119,12 +117,11 @@ body {
     gap: 2rem;
     border: 1px solid var(--dark-blue-400);
     border-radius: 8px;
-    width: 50%;
 }
 
 .btn-insert-word{
     width: 100%;
-    height: 3rem;
+    min-height: 3rem;
     background-color: var(--dark-blue);
     border: 1px solid var(--dark-blue-400);
     border-radius: 8px;
@@ -224,7 +221,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0.5rem 0;
-    height: 3rem;
+    min-height: 3rem;
 }
 
 .input{
