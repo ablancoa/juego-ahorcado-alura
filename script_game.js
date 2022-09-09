@@ -65,18 +65,22 @@ newGame.addEventListener('click',selectWord);
 let arrayDBlarge = arrayDB().length
 let fastWordStorage = sessionStorage.getItem("fastWord");
 
-function selectWord(){
-
-    let BD = arrayDB();
-    if (fastWordStorage == "" || fastWordStorage == " " || fastWordStorage == "null" || fastWordStorage == null){
-        secretWord = BD[Math.round(Math.random()*arrayDBlarge)]  
-    }else{
-        secretWord = fastWordStorage;    
+// Para saber si es juego rapido o no
+function isSessionStorageEmpty(){
+    if(fastWordStorage){ // 
+        console.log(fastWordStorage);
+        secretWord = fastWordStorage;
+        arrayWord = startNewGame(secretWord);
+        sessionStorage.setItem("fastWord", "");
     }
+}
+
+function selectWord(){
+    let BD = arrayDB();
+    secretWord = BD[Math.round(Math.random()*arrayDBlarge)]  
     arrayWord = startNewGame(secretWord);
     sessionStorage.setItem("fastWord", "")
-    // console.log(secretWord);
-    
+    // console.log(secretWord);   
 }
 
 // Array con los id de todas las letras
@@ -242,5 +246,6 @@ function capturarLetra(event){
         
 }
 // Activar botones despues de cargar BD
+isSessionStorageEmpty();
 newGame.classList.remove('inactive');
 desistir.classList.remove('inactive');

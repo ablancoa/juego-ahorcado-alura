@@ -71,6 +71,7 @@ body {
     padding: 2rem;
     align-items: center;
     gap: 2rem;
+    width: 50%;
     
 }
 
@@ -118,6 +119,7 @@ body {
     gap: 2rem;
     border: 1px solid var(--dark-blue-400);
     border-radius: 8px;
+    width: 50%;
 }
 
 .btn-insert-word{
