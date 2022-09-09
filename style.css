@@ -70,9 +70,7 @@ body {
     flex-direction: column;
     padding: 2rem;
     align-items: center;
-    gap: 2rem;
-    width: 50%;
-    
+    gap: 2rem;    
 }
 
 .border{
@@ -267,7 +265,7 @@ body {
 }
 
 
-.button-conatiner{
+.button-continer-game{
     display: flex;
     justify-content:center;
     margin: 1rem;
