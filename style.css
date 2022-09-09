@@ -65,6 +65,14 @@ body {
     min-height: 60vh;
 }
 
+.button-container-index{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+    gap: 2rem;    
+}
+
 .button-container{
     display: flex;
     flex-direction: column;
@@ -265,7 +273,7 @@ body {
 
 
 .button-continer-game{
-    display: flex;
+    display: block;
     justify-content:center;
     margin: 1rem;
 }
@@ -501,6 +509,14 @@ top: calc(50% - 2px);
 }
 
 @media (min-width: 601px){
+    .button-container{
+        width: 50%;
+    }
+
+    .juego-rapido{
+        width: 50%;
+    }
+
     .letters:hover{
         background-color: #757FB2;
     }
