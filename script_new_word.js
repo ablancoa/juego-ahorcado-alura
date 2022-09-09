@@ -64,6 +64,7 @@ function actualizarData (){
           'La palabra ha sido agregada!',
           'Exito'
         )
+        inputNewWord.value ="";
       }catch (e) {
         Swal.fire({
           icon: 'error',
@@ -100,6 +101,7 @@ function startFastGame() {
         'La palabra ha sido agregada, ya puede ir al juego!',
         'Exito'
       )
+      inputFastWord.value = "";
     }
   }
   else{
