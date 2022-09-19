@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/png" href="./img/iconos/icon-cuerda.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -12,22 +13,25 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Juego del ahorcado</title>
 </head>
+
 <body>
     <header class="header">
-        <img src="./img/iconos/Vector.svg" alt="Icono de Alura" class="alura-icon">     
+        <img src="./img/iconos/Vector.svg" alt="Icono de Alura" class="alura-icon">
     </header>
     <main class="main-new-word-container">
         <div class="new-word-container">
             <div class="button-container border">
-                <input id="new-word-input" type="text" class="input-new-word" placeholder="Palabra nueva"  pattern="^[A-Za-z]+$" maxlength="10">
+                <input id="new-word-input" type="text" class="input-new-word" placeholder="Palabra nueva"
+                    pattern="^[A-Za-z]+$" maxlength="10">
                 <span class="span">Agregar palabra a la base de datos global <br>(No caracteres especiales)</span>
                 <input id="add-new-word" type="submit" class="btn-insert-word" value="Añadir nueva palabra"></button>
             </div>
             <div class="juego-rapido border">
-                <input id="new-fast-word" type="text" class="input-new-word" placeholder="Palabra"  pattern="^[A-Za-z]+$" maxlength="12">
+                <input id="new-fast-word" type="text" class="input-new-word" placeholder="Palabra" pattern="^[A-Za-z]+$"
+                    maxlength="12">
                 <span class="span">Agregar palabra para juego rápido <br>(max: 12 letras)</span>
                 <input id="new-fast-game" type="submit" class="btn-insert-word" value="Añadir la palabra">
-            </div>    
+            </div>
         </div>
         <button class="goToGame">Ir al juego</button>
     </main>
@@ -39,7 +43,8 @@
             <a href="https://www.linkedin.com/in/alexander-blanco-amador-a52783198/" class="social_link linkedin"></a>
             <a href="https://github.com/ablancoa" class="social_link github"></a>
         </div>
-        <script type="module" src="./script_new_word.js"></script>
-    </footer>   
+        <script type="module" src="./scripts/script_new_word.js"></script>
+    </footer>
 </body>
+
 </html>

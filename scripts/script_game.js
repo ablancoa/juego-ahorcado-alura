@@ -75,8 +75,8 @@ function isSessionStorageEmpty(){
     }
 }
 
-function selectWord(){
-    let BD = arrayDB();
+async function selectWord(){
+    let BD = await arrayDB();
     secretWord = BD[Math.round(Math.random()*arrayDBlarge)]  
     arrayWord = startNewGame(secretWord);
     sessionStorage.setItem("fastWord", "")

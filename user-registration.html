@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/authentication.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Juego del ahorcado - Registration</title>
+</head>
+
+<body>
+    <main class="main">
+        <form class="main-hero">
+            <div class="container">
+                <label for="user-name">Nombre del usuario</label>
+                <input type="text" name="usuario" id="user-name" class="input" required>
+            </div>
+            <div class="container">
+                <label for="user-nickname">Nombre del usuario</label>
+                <input type="text" name="usuario" id="user-nickname" class="input" required>
+            </div>
+            <div class="container">
+                <label for="user-password">Contraseña</label>
+                <input type="password" name="usuario" id="user-password" class="input" minlength="6" required>
+            </div>
+            <button type="button" class="autenticar-btn">Autenticar</button>
+        </form>
+
+        <script type="module" src="./scripts/script-registration.js"></script>
+    </main>
+</body>
+
+</html>

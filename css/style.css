@@ -1,4 +1,4 @@
-:root{
+:root {
     --dark-blue: #0A3871;
     --dark-blue-400: #052051;
     --light-blue: #EFF1FA;
@@ -10,30 +10,37 @@ body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     min-width: 325px;
-    
+
 }
 
 /* Para todas las paginas */
 
-.header{
+.header {
     width: 95%;
     height: 15vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-.addWord{
+.user {
+    display: flex;
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.addWord {
     justify-content: space-between;
     margin-left: 1rem;
 }
 
-.alura-icon{
-   margin-left: 5rem; 
+.alura-icon {
+    margin-left: 5rem;
 }
 
 /* Area de iniciar juego - index.html */
 
-.main-container{
+.main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,7 +48,7 @@ body {
     min-width: 325px;
 }
 
-.main-container-index{
+.main-container-index {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,14 +57,14 @@ body {
     min-width: 325px;
 }
 
-.main-new-word-container{
+.main-new-word-container {
     display: flex;
     flex-direction: column;
     width: 80%;
     margin: 0 auto;
 }
 
-.new-word-container{
+.new-word-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,28 +72,28 @@ body {
     min-height: 60vh;
 }
 
-.button-container-index{
+.button-container-index {
     display: flex;
     flex-direction: column;
     padding: 2rem;
     align-items: center;
-    gap: 2rem;    
+    gap: 2rem;
 }
 
-.button-container{
+.button-container {
     display: flex;
     flex-direction: column;
     padding: 2rem;
     align-items: center;
-    gap: 2rem;    
+    gap: 2rem;
 }
 
-.border{
+.border {
     border: 1px solid var(--dark-blue-400);
     border-radius: 8px;
 }
 
-.btn-begin-game{
+.btn-begin-game {
     position: relative;
     font-size: 1.2rem;
     width: 15rem;
@@ -106,7 +113,7 @@ body {
     font-family: 'Inter';
 }
 
-.btn-add-word{
+.btn-add-word {
     background-color: var(--light-blue);
     border: 1px solid var(--light-blue-500);
     border-radius: 8px;
@@ -117,7 +124,7 @@ body {
     transition: 0.5s;
 }
 
-.juego-rapido{
+.juego-rapido {
     display: flex;
     flex-direction: column;
     padding: 2rem;
@@ -127,7 +134,7 @@ body {
     border-radius: 8px;
 }
 
-.btn-insert-word{
+.btn-insert-word {
     width: 100%;
     min-height: 3rem;
     background-color: var(--dark-blue);
@@ -140,11 +147,11 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.span{
+.span {
     text-align: center;
 }
 
-.goToGame{
+.goToGame {
     width: 350px;
     height: 3rem;
     background-color: var(--dark-blue);
@@ -158,7 +165,7 @@ body {
 }
 
 /* Pantalla del juego */
-.img-container{
+.img-container {
     width: 30%;
     height: 40vh;
     margin: 0 auto;
@@ -167,64 +174,73 @@ body {
     align-items: center;
 }
 
-.inactive{
+.inactive {
     visibility: hidden;
 }
 
-.block-letter{
+.block-letter {
     background-color: #0A3871;
     cursor: not-allowed;
     pointer-events: none;
 }
 
 /* Partes del cuerpo del muñeco -game.html */
-.general-container{
+.general-container {
     margin: 15px 0;
 }
 
-.munheco{
+.munheco {
     scale: 0.5;
-    position: relative;    
+    position: relative;
 }
-.base{
+
+.base {
     top: 90px;
     left: 195px;
 }
-.rama{
+
+.rama {
     bottom: 90px;
     right: 50px;
 }
-.cuerda{
+
+.cuerda {
     bottom: 80px;
     right: 97px;
 }
-.cabeza{
+
+.cabeza {
     bottom: 54px;
     right: 132px;
 }
-.cuerpo{
+
+.cuerpo {
     right: 167px;
     bottom: 7px;
 }
-.brazo-derecho{
+
+.brazo-derecho {
     right: 199px;
     bottom: 25px;
 }
-.brazo-izquierdo{
+
+.brazo-izquierdo {
     right: 219px;
     bottom: 25px;
 }
-.pie-derecho{
+
+.pie-derecho {
     right: 276px;
     top: 41px;
 }
-.pie-izquierdo{
+
+.pie-izquierdo {
     right: 297px;
     top: 41px;
 }
 
 
-.input-container{
+.input-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -232,7 +248,7 @@ body {
     min-height: 3rem;
 }
 
-.input{
+.input {
     font-family: Inter;
     font-size: 2rem;
     text-align: center;
@@ -244,11 +260,11 @@ body {
     border-bottom: 2px solid var(--light-blue-500);
 }
 
-.input:focus{
+.input:focus {
     outline: none;
 }
 
-.letter-mistakes{
+.letter-mistakes {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -256,7 +272,7 @@ body {
     min-height: 2rem;
 }
 
-.letters{
+.letters {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -272,13 +288,13 @@ body {
 }
 
 
-.button-continer-game{
+.button-continer-game {
     display: block;
-    justify-content:center;
+    justify-content: center;
     margin: 1rem;
 }
 
-.btn-new-game{
+.btn-new-game {
     width: 150px;
     padding: 1rem;
     background-color: var(--dark-blue);
@@ -291,11 +307,11 @@ body {
     cursor: pointer;
 }
 
-.btn-new-game:focus{
+.btn-new-game:focus {
     outline: none;
 }
 
-.btn-surrender{
+.btn-surrender {
     width: 150px;
     padding: 1rem;
     background-color: var(--light-blue);
@@ -310,105 +326,105 @@ body {
 
 /* Boton de ir atras a agregar palabras en pantalla de juego -------------------------------------------*/
 .icon-btn {
-width: 50px;
-height: 50px;
-border: 1px solid #cdcdcd;
-background: white;
-border-radius: 25px;
-overflow: hidden;
-position: relative;
-transition: width 0.2s ease-in-out;
-font-weight: 500;
-font-family: inherit;
-cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #cdcdcd;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
 }
 
 .add-btn:hover {
-width: 140px;
+    width: 140px;
 }
 
 .add-btn::before,
 .add-btn::after {
-transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
-content: "";
-position: absolute;
-height: 4px;
-width: 10px;
-top: calc(50% - 2px);
-background: var(--dark-blue);
+    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 10px;
+    top: calc(50% - 2px);
+    background: var(--dark-blue);
 }
 
 .add-btn::after {
-right: 14px;
-overflow: hidden;
-border-top-right-radius: 2px;
-border-bottom-right-radius: 2px;
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 .add-btn::before {
-left: 14px;
-border-top-left-radius: 2px;
-border-bottom-left-radius: 2px;
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
 }
 
 .icon-btn:focus {
-outline: none;
+    outline: none;
 }
 
 .btn-txt {
-opacity: 0;
-transition: opacity 0.2s;
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
 .add-btn:hover::before,
 .add-btn:hover::after {
-width: 4px;
-border-radius: 2px;
+    width: 4px;
+    border-radius: 2px;
 }
 
 .add-btn:hover .btn-txt {
-opacity: 1;
+    opacity: 1;
 }
 
 .add-icon::after,
 .add-icon::before {
-transition: all 0.2s ease-in-out;
-content: "";
-position: absolute;
-height: 20px;
-width: 2px;
-top: calc(50% - 10px);
-background: var(--dark-blue);
-overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    background: var(--dark-blue);
+    overflow: hidden;
 }
 
 .add-icon::before {
-left: 22px;
-border-top-left-radius: 2px;
-border-bottom-left-radius: 2px;
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
 }
 
 .add-icon::after {
-right: 22px;
-border-top-right-radius: 2px;
-border-bottom-right-radius: 2px;
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 .add-btn:hover .add-icon::before {
-left: 15px;
-height: 4px;
-top: calc(50% - 2px);
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
 }
 
 .add-btn:hover .add-icon::after {
-right: 15px;
-height: 4px;
-top: calc(50% - 2px);
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
 }
 
 /* --------------------------------------Fin del boton-------------------------------------------------------- */
 
-.input-new-word{
+.input-new-word {
     width: 100%;
     font-family: Inter;
     font-size: 1.5rem;
@@ -420,14 +436,14 @@ top: calc(50% - 2px);
     border-bottom: 2px solid var(--light-blue-500);
 }
 
-.input-new-word:focus{
+.input-new-word:focus {
     outline: none;
 }
 
 
 
 /* Footer */
-.footer{
+.footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -438,7 +454,7 @@ top: calc(50% - 2px);
     box-sizing: border-box;
 }
 
-.social_link{
+.social_link {
     display: inline-block;
     margin: 0.5rem;
     width: 2rem;
@@ -446,145 +462,157 @@ top: calc(50% - 2px);
     background-size: 100%;
 }
 
-.social_link.facebook{
+.social_link.facebook {
     background-image: url(./img/iconos/facebook.svg);
 }
 
-.social_link.linkedin{
+.social_link.linkedin {
     background-image: url(./img/iconos/linkedin.svg);
 }
 
-.social_link.instagram{
+.social_link.instagram {
     background-image: url(./img/iconos/instagram.svg);
-     
+
 }
 
-.social_link.github{
+.social_link.github {
     background-image: url(./img/iconos/github.svg);
 }
 
-@media (max-width: 600px){
-    .main-container-index{
+@media (max-width: 600px) {
+    .main-container-index {
         height: 70vh;
         width: 90%;
         margin: 0 auto;
     }
 
-    .btn-begin-game, .btn-add-word{
+    .btn-begin-game,
+    .btn-add-word {
         width: 100%;
     }
-    .new-word-container{
+
+    .new-word-container {
         display: block;
         height: 100%;
         width: 90%;
         margin: 0 auto;
 
     }
-    .input-new-word{
+
+    .input-new-word {
         width: 100%;
     }
-    .border{
+
+    .border {
         margin-bottom: 0.5rem;
     }
-    .main-container{
+
+    .main-container {
         width: 90%;
         margin: 0 auto;
     }
-    .button-conatiner{
+
+    .button-conatiner {
         display: block;
     }
-    .btn-new-game{
+
+    .btn-new-game {
         width: 100%;
         margin-bottom: 0.5rem;
     }
-    .btn-surrender{
+
+    .btn-surrender {
         width: 100%;
     }
-    .goToGame{
+
+    .goToGame {
         width: 90%;
     }
-    .footer{
+
+    .footer {
         flex-direction: column;
     }
 }
 
-@media (min-width: 601px){
-    .button-container{
+@media (min-width: 601px) {
+    .button-container {
         width: 50%;
     }
 
-    .juego-rapido{
+    .juego-rapido {
         width: 50%;
     }
 
-    .letters:hover{
+    .letters:hover {
         background-color: #757FB2;
     }
 
-    .btn-add-word:hover{
+    .btn-add-word:hover {
         transition: 0.5s;
         scale: 105%;
     }
 
-    .btn-begin-game:hover{
+    .btn-begin-game:hover {
         transition: 0.5s;
         scale: 105%;
     }
 
     .btn-begin-game::before {
-    content: '';
-    display: block;
-    position: absolute;
-    z-index: 0;
-    bottom: 0;
-    left: 0;
-    height: 0px;
-    width: 100%;
-    background: var(--light-blue-500);
-    background: linear-gradient(90deg, var(--dark-blue) 20%, var(--dark-blue-400) 100%);
-    transition: 0.2s;
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 0;
+        bottom: 0;
+        left: 0;
+        height: 0px;
+        width: 100%;
+        background: var(--light-blue-500);
+        background: linear-gradient(90deg, var(--dark-blue) 20%, var(--dark-blue-400) 100%);
+        transition: 0.2s;
     }
-    
+
     .btn-begin-game .label {
-    position: relative;
+        position: relative;
     }
-    
+
     .btn-begin-game .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 3em;
-    width: 3em;
-    position: absolute;
-    top: 3em;
-    right: 0;
-    opacity: 0;
-    transition: 0.4s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 3em;
+        width: 3em;
+        position: absolute;
+        top: 3em;
+        right: 0;
+        opacity: 0;
+        transition: 0.4s;
     }
-    
+
     .btn-begin-game:hover::before {
-    height: 100%;
+        height: 100%;
     }
-    
+
     .btn-begin-game:hover .icon {
-    top: 0;
-    opacity: 1;
+        top: 0;
+        opacity: 1;
     }
 
     .btn-insert-word:hover {
         transition: 0.5s;
         scale: 105%;
     }
-    .goToGame:hover{
+
+    .goToGame:hover {
         transition: 0.5s;
         scale: 105%;
     }
 
-    .btn-new-game:hover{
+    .btn-new-game:hover {
         transition: 0.5s;
         scale: 105%;
     }
-    .btn-surrender:hover{
+
+    .btn-surrender:hover {
         transition: 0.5s;
         scale: 105%;
     }

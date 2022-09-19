@@ -19,5 +19,6 @@
   "homepage": "https://github.com/ablancoa/juego-ahorcado-alura#readme",
   "dependencies": {
     "firebase": "^9.9.2"
-  }
+  },
+  "type": "module"
 }
