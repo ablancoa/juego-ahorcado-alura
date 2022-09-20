@@ -2,19 +2,13 @@ const userName = document.getElementById('user-name');
 const userNickName = document.getElementById('user-nickname');
 const userPassword = document.getElementById('user-password');
 const btnAuthenticate = document.querySelector('.autenticar-btn');
+const user = document.getElementById('user-nick-name');
+const closeSessionBtn = document.querySelector('.close-session');
 
-
+import {firebaseConfig} from "../modules/firebaseConfig.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCTzym29yivKoTAiOoDKZXygMgMyi1J-hI",
-  authDomain: "juego-ahorcado-6feeb.firebaseapp.com",
-  projectId: "juego-ahorcado-6feeb",
-  storageBucket: "juego-ahorcado-6feeb.appspot.com",
-  messagingSenderId: "911015404308",
-  appId: "1:911015404308:web:3eb95399e51d7eb7b25801"
-};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -34,7 +28,7 @@ async function compareData(){
   let userPasswordTrim = userPassword.value.trim()
 
   if (userNickNameTrim != "" && userNameTrim != "" && userPasswordTrim != ""){
-    const docRef = doc(db, "words", `${userNickName.value}`);
+    const docRef = doc(db, "words", `${userNickNameTrim.toUpperCase()}`);
     try {
       const docSnap = await getDoc(docRef);
       if(docSnap.exists()){
@@ -45,19 +39,19 @@ async function compareData(){
         })
       }
       else{
-        await setDoc(doc(wordsRef, userNickName.value), {
-          nickname:  `@${userNickName.value.trim()}`, 
-          nombre: userName.value.trim(), 
-          contrsena: userPassword.value.trim(),
-          palabras: []
+        await setDoc(doc(wordsRef, userNickNameTrim.toUpperCase()), {
+          nickname:  `${userNickNameTrim.toUpperCase()}`, 
+          nombre: userNameTrim.toUpperCase(), 
+          contrsena: userPasswordTrim.toUpperCase(),
+          palabra: ['LAPTOP','HOLA','JUEGO', 'CASA', 'FELIZ', 'ESTUDIO', 'CAMA', 'PUERTA', 'TRABAJO', 'SORPRESA', 'AMOR']
         });
         Swal.fire(
           'Buen trabajo!',
           'Usuario registrado!',
           'success'
         )
-      }
-        window.open("./user-authentication.html","_self")
+        window.open("./user-authentication.html","_self");
+      }      
     } 
     catch (error) {
       console.log(error);
@@ -67,4 +61,10 @@ async function compareData(){
   };
 }
 
+user.addEventListener('click', toogleCloseSession);
+closeSessionBtn.addEventListener('click',closeSession);
+
+function toogleCloseSession(){
+  closeSessionBtn.classList.toggle('inactive');
+}
 

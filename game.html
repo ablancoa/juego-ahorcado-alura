@@ -15,10 +15,17 @@
 <body>
     <header class="header addWord">
         <img src="./img/iconos/Vector.svg" alt="Icono de Alura" class="alura-icon">
-        <button class="icon-btn add-btn">
-            <div class="add-icon"></div>
-            <div class="btn-txt">Añadir palabra</div>
-        </button>
+        <div class="section-header">
+            <button class="icon-btn add-btn">
+                <div class="add-icon"></div>
+                <div class="btn-txt">Añadir palabra</div>
+            </button>
+            <div class="user">
+                <p>Usuario: </p>
+                <p id="user-nick-name">prueba</p>
+            </div>
+            <button class="close-session inactive">Cerrar sesión</button>
+        </div>
     </header>
     <main class="main-container">
         <div class="img-container">
@@ -44,6 +51,8 @@
             <button class="btn-surrender inactive">Desistir</button>
         </div>
         <script type="module" src="./scripts/script_game.js"></script>
+        <script type="module" src="./modules/firebaseConfig.js"></script>
+        <script type="module" src="./modules/close-session.js"></script>
     </main>
     <footer class="footer">
         <p class="designed-by">Designed by Alexander Blanco</p>

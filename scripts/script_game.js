@@ -5,7 +5,13 @@ const errorEntrado = document.querySelector('.letter-mistakes');
 const desistir = document.querySelector('.btn-surrender');
 let idImagenes = document.getElementsByClassName('munheco');
 const agregarPalabra = document.querySelector('.icon-btn');
+const user = document.getElementById('user-nick-name');
+const closeSessionBtn = document.querySelector('.close-session');
 
+// obtencion del usuario
+let userJsonData = sessionStorage.getItem('usuario');
+let userGame = JSON.parse(userJsonData);
+user.innerHTML = userGame.name || "prueba";
 
 //------------------------------------------------------------------------------------------------------------
 // Cargando array de palabras en modules
@@ -13,15 +19,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyCTzym29yivKoTAiOoDKZXygMgMyi1J-hI",
-    authDomain: "juego-ahorcado-6feeb.firebaseapp.com",
-    projectId: "juego-ahorcado-6feeb",
-    storageBucket: "juego-ahorcado-6feeb.appspot.com",
-    messagingSenderId: "911015404308",
-    appId: "1:911015404308:web:3eb95399e51d7eb7b25801"
-};
+import {firebaseConfig} from "../modules/firebaseConfig.js"
+import { closeSession } from "../modules/close-session.js";
     
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -29,7 +28,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 
-const docRef = doc(db, "words", "prueba");
+const docRef = doc(db, "words", `${userGame.nickname}`);
 const docSnap = await getDoc(docRef);
 
 let arrayDB = function () { //Array con todas las palabras
@@ -59,15 +58,17 @@ desistir.addEventListener('click',clear);
 agregarPalabra.addEventListener('click',() => {window.open("./new_word.html","_self")})
 window.addEventListener('keypress', capturarLetra);
 newGame.addEventListener('click',selectWord);
+user.addEventListener('click', toogleCloseSession);
+closeSessionBtn.addEventListener('click',closeSession);
 
 
 // Elegir variable al azar
 let arrayDBlarge = arrayDB().length
-let fastWordStorage = sessionStorage.getItem("fastWord");
+let fastWordStorage = userGame.palabra;
 
 // Para saber si es juego rapido o no
 function isSessionStorageEmpty(){
-    if(fastWordStorage){ // 
+    if(fastWordStorage != ""){ // 
         console.log(fastWordStorage);
         secretWord = fastWordStorage;
         arrayWord = startNewGame(secretWord);
@@ -75,12 +76,20 @@ function isSessionStorageEmpty(){
     }
 }
 
+let userData;
+// para iniciar un juego nuevo 
 async function selectWord(){
     let BD = await arrayDB();
-    secretWord = BD[Math.round(Math.random()*arrayDBlarge)]  
+    secretWord = BD[Math.floor(Math.random()*arrayDBlarge)]  
     arrayWord = startNewGame(secretWord);
-    sessionStorage.setItem("fastWord", "")
-    // console.log(secretWord);   
+    userData = {
+        name: userGame.name,
+        nickname: userGame.nickname,
+        palabra: ""
+    }
+    console.log(userData.nickname);
+    let userJSON = JSON.stringify(userData)
+    sessionStorage.setItem("usuario", userJSON); 
 }
 
 // Array con los id de todas las letras
@@ -244,6 +253,10 @@ function capturarLetra(event){
         
     }
         
+}
+
+function toogleCloseSession(){
+    closeSessionBtn.classList.toggle('inactive');
 }
 // Activar botones despues de cargar BD
 isSessionStorageEmpty();

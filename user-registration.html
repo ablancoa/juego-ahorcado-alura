@@ -12,6 +12,14 @@
 </head>
 
 <body>
+    <header class="header">
+        <img src="./img/iconos/Vector.svg" alt="Icono de Alura" class="alura-icon">
+        <div class="user">
+            <p>Usuario: </p>
+            <p id="user-nick-name">prueba</p>
+            <button class="close-session inactive">Cerrar sesión</button>
+        </div>
+    </header>
     <main class="main">
         <form class="main-hero">
             <div class="container">
@@ -30,6 +38,8 @@
         </form>
 
         <script type="module" src="./scripts/script-registration.js"></script>
+        <script type="module" src="./modules/firebaseConfig.js"></script>
+        <script type="module" src="./modules/close-session.js"></script>
     </main>
 </body>
 

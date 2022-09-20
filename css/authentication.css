@@ -17,9 +17,47 @@ body {
 
 }
 
+.header {
+    width: 95%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header img {
+    margin-left: 5rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+}
+
+.user {
+    display: flex;
+    color: gray;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.close-session {
+    position: absolute;
+    right: 25px;
+    top: 70px;
+    background-color: var(--dark-blue);
+    border: 1px solid var(--dark-blue-400);
+    border-radius: 8px;
+    color: var(--light-blue);
+    margin-right: 1rem;
+    font-family: Inter;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
 .main {
     width: 100vw;
-    height: 100vh;
+    height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,6 +112,10 @@ body {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
 
+}
+
+.inactive {
+    visibility: hidden;
 }
 
 @media (max-width: 600px) {

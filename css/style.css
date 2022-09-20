@@ -23,10 +23,30 @@ body {
     justify-content: space-between;
 }
 
+.section-header {
+    display: flex;
+    align-items: center;
+}
+
 .user {
     display: flex;
     color: gray;
     font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.close-session {
+    position: absolute;
+    right: 25px;
+    top: 70px;
+    background-color: var(--dark-blue);
+    border: 1px solid var(--dark-blue-400);
+    border-radius: 8px;
+    color: var(--light-blue);
+    margin-right: 1rem;
+    font-family: Inter;
+    font-size: 0.8rem;
+    cursor: pointer;
 }
 
 .addWord {
@@ -337,6 +357,7 @@ body {
     font-weight: 500;
     font-family: inherit;
     cursor: pointer;
+    margin-right: 1rem;
 }
 
 .add-btn:hover {

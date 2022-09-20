@@ -3,6 +3,31 @@ const buttonNewWord = document.querySelector('#add-new-word');
 const inputFastWord = document.querySelector('#new-fast-word');
 const buttonFastGame = document.querySelector('#new-fast-game');
 const goToGame = document.querySelector('.goToGame');
+const user = document.getElementById('user-nick-name');
+const closeSessionBtn = document.querySelector('.close-session');
+const personalLibrery = document.querySelector('#biblio-personal');
+
+// obtencion del usuario
+let userJsonData = sessionStorage.getItem('usuario');
+let userGame = JSON.parse(userJsonData);
+console.log(userGame);
+user.innerHTML = userGame.name;
+
+// Ocultar la seccion de libreria personal si no esta registrado
+if ( userGame.nickname == "prueba"){
+  personalLibrery.style.display = "none"
+}
+
+// BTN DE SECCION
+import { closeSession } from "../modules/close-session.js";
+user.addEventListener('click', toogleCloseSession);
+closeSessionBtn.addEventListener('click',closeSession);
+function toogleCloseSession(){
+  closeSessionBtn.classList.toggle('inactive');
+}
+
+
+
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
@@ -11,20 +36,8 @@ import { collection, query, where } from "https://www.gstatic.com/firebasejs/9.9
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
 import { getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
 import { updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js"
+import {firebaseConfig} from "../modules/firebaseConfig.js";
 
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-apiKey: "AIzaSyCTzym29yivKoTAiOoDKZXygMgMyi1J-hI",
-authDomain: "juego-ahorcado-6feeb.firebaseapp.com",
-projectId: "juego-ahorcado-6feeb",
-storageBucket: "juego-ahorcado-6feeb.appspot.com",
-messagingSenderId: "911015404308",
-appId: "1:911015404308:web:3eb95399e51d7eb7b25801"
-};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -36,7 +49,7 @@ const db = getFirestore(app);
 buttonNewWord.addEventListener('click',actualizarData);
 buttonFastGame.addEventListener('click',startFastGame);
 goToGame.addEventListener('click', () => {window.open("./game.html","_self")})
-const docRef = doc(db, "words", "prueba");
+const docRef = doc(db, "words", `${userGame.nickname}`);
 let docSnap = await getDoc(docRef);
 
 // Consulta a la base de datos
@@ -85,6 +98,7 @@ function actualizarData (){
   
 }
 
+// Para juego rapido
 function startFastGame() {
   if(inputFastWord.value != "" && inputFastWord.value != " "){
     if(!inputFastWord.checkValidity()) {
@@ -94,8 +108,14 @@ function startFastGame() {
         text: 'Solo se pueden insertar letras',
       })
     } else {
-      let fastWord = inputFastWord.value;
-      sessionStorage.setItem("fastWord", fastWord.toUpperCase());
+      let userData = {
+        name: (docSnap.data()).nombre,
+        nickname: (docSnap.data()).nickname,
+        palabra: inputFastWord.value.toUpperCase()
+      }
+      let userJSON = JSON.stringify(userData)
+      sessionStorage.setItem("usuario", userJSON);
+
       Swal.fire(
         'Buen trabajo!',
         'La palabra ha sido agregada, ya puede ir al juego!',
