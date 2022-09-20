@@ -35,10 +35,20 @@ body {
     cursor: pointer;
 }
 
+.user p {
+    align-items: center;
+}
+
+.avatares {
+    width: 40px;
+    margin-left: 1rem;
+    border-radius: 50%;
+}
+
 .close-session {
     position: absolute;
     right: 25px;
-    top: 70px;
+    top: 80px;
     background-color: var(--dark-blue);
     border: 1px solid var(--dark-blue-400);
     border-radius: 8px;
@@ -56,6 +66,12 @@ body {
 
 .alura-icon {
     margin-left: 5rem;
+}
+
+.return-icon {
+    margin-left: 1rem;
+    width: 25px;
+    cursor: pointer;
 }
 
 /* Area de iniciar juego - index.html */
@@ -484,26 +500,34 @@ body {
 }
 
 .social_link.facebook {
-    background-image: url(./img/iconos/facebook.svg);
+    background-image: url(../img/iconos/facebook.svg);
 }
 
 .social_link.linkedin {
-    background-image: url(./img/iconos/linkedin.svg);
+    background-image: url(../img/iconos/linkedin.svg);
 }
 
 .social_link.instagram {
-    background-image: url(./img/iconos/instagram.svg);
+    background-image: url(../img/iconos/instagram.svg);
 
 }
 
 .social_link.github {
-    background-image: url(./img/iconos/github.svg);
+    background-image: url(../img/iconos/github.svg);
 }
 
 @media (max-width: 600px) {
     .main-container-index {
         height: 70vh;
         width: 90%;
+        margin: 0 auto;
+    }
+
+    .alura-icon {
+        margin-left: 0;
+    }
+
+    .header {
         margin: 0 auto;
     }
 
@@ -550,6 +574,12 @@ body {
         width: 90%;
     }
 
+    /* .icon-btn {
+        position: absolute;
+        right: 150px;
+        top: 50px;
+    } */
+
     .footer {
         flex-direction: column;
     }
@@ -558,6 +588,11 @@ body {
 @media (min-width: 601px) {
     .button-container {
         width: 50%;
+    }
+
+    .return-icon:hover {
+        transition: 0.5s;
+        scale: 110%;
     }
 
     .juego-rapido {

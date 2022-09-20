@@ -7,11 +7,15 @@ let idImagenes = document.getElementsByClassName('munheco');
 const agregarPalabra = document.querySelector('.icon-btn');
 const user = document.getElementById('user-nick-name');
 const closeSessionBtn = document.querySelector('.close-session');
+const imgAvatar = document.getElementById('avatar');
+const userContainer = document.getElementById('user-container');
+const returnBtn = document.querySelector('.return-icon');
 
 // obtencion del usuario
 let userJsonData = sessionStorage.getItem('usuario');
 let userGame = JSON.parse(userJsonData);
 user.innerHTML = userGame.name || "prueba";
+imgAvatar.setAttribute('src',userGame.urlImg);
 
 //------------------------------------------------------------------------------------------------------------
 // Cargando array de palabras en modules
@@ -56,9 +60,13 @@ let erroresCometidos = 0;
 
 desistir.addEventListener('click',clear);
 agregarPalabra.addEventListener('click',() => {window.open("./new_word.html","_self")})
+returnBtn.addEventListener('click', () => {
+    clear();
+    window.open("./index.html","_self")
+});
 window.addEventListener('keypress', capturarLetra);
 newGame.addEventListener('click',selectWord);
-user.addEventListener('click', toogleCloseSession);
+userContainer.addEventListener('click', toogleCloseSession);
 closeSessionBtn.addEventListener('click',closeSession);
 
 

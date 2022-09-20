@@ -13,10 +13,11 @@
 
 <body>
     <header class="header">
-        <img src="./img/iconos/Vector.svg" alt="Icono de Alura" class="alura-icon">
-        <div class="user">
+        <img src="./img/iconos/retorno.png" alt="Icono de regresar" class="return-icon">
+        <div id="user-container" class="user">
             <p>Usuario: </p>
             <p id="user-nick-name">prueba</p>
+            <img class="avatares" id="avatar" alt="">
             <button class="close-session inactive">Cerrar sesión</button>
         </div>
     </header>
@@ -35,10 +36,20 @@
             <span>Recuperar su <a href="./restores-password.html">contraseña</a></span>
         </div>
 
+
         <script type="module" src="./scripts/script-authentication.js"></script>
         <script type="module" src="./modules/firebaseConfig.js"></script>
         <script type="module" src="./modules/close-session.js"></script>
     </main>
+    <footer class="footer">
+        <p class="designed-by">Designed by Alexander Blanco</p>
+        <div class="social" id="redesSociales">
+            <a href="https://www.facebook.com/alexander.blanco.7777/" class="social_link facebook"></a>
+            <a href="https://www.instagram.com/blancoamador95/" class="social_link instagram"></a>
+            <a href="https://www.linkedin.com/in/alexander-blanco-amador-a52783198/" class="social_link linkedin"></a>
+            <a href="https://github.com/ablancoa" class="social_link github"></a>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -3,6 +3,9 @@ const userPassword = document.getElementById('user-password');
 const btnAuthenticate = document.querySelector('.autenticar-btn');
 const user = document.getElementById('user-nick-name');
 const closeSessionBtn = document.querySelector('.close-session');
+const imgAvatar = document.getElementById('avatar');
+const userContainer = document.getElementById('user-container');
+const returnBtn = document.querySelector('.return-icon');
 
 import {firebaseConfig} from "../modules/firebaseConfig.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
@@ -13,6 +16,7 @@ import { closeSession } from "../modules/close-session.js";
 let userJsonData = sessionStorage.getItem('usuario');
 let userGame = JSON.parse(userJsonData);
 user.innerHTML = ` ${userGame.name}`;
+imgAvatar.setAttribute('src',userGame.urlImg);
 
 console.log(userGame);
 
@@ -25,6 +29,8 @@ import { collection, doc, setDoc, query, where, getDocs, getDoc} from "https://w
 const wordsRef = collection(db, "words");
 
 btnAuthenticate.addEventListener('click', authenticate);
+returnBtn.addEventListener('click', () => {window.open("./index.html","_self")});
+
 let userData;
 
 // funcion para autenticar al usuario
@@ -47,7 +53,8 @@ async function authenticate (){
               userData = {
                 name: (doc.data()).nombre,
                 nickname: (doc.data()).nickname,
-                palabra : ""
+                palabra : "",
+                urlImg: (doc.data()).urlImg
               }
               window.open("./index.html","_self");
 
@@ -97,7 +104,7 @@ async function authenticate (){
 }
 
 // Me permite mostrar y ocultar el cerrar sesion
-user.addEventListener('click', toogleCloseSession);
+userContainer.addEventListener('click', toogleCloseSession);
 closeSessionBtn.addEventListener('click',closeSession);
 
 function toogleCloseSession(){

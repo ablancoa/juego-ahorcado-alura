@@ -13,12 +13,8 @@
 
 <body>
     <header class="header">
-        <img src="./img/iconos/Vector.svg" alt="Icono de Alura" class="alura-icon">
-        <div class="user">
-            <p>Usuario: </p>
-            <p id="user-nick-name">prueba</p>
-            <button class="close-session inactive">Cerrar sesión</button>
-        </div>
+        <img src="./img/iconos/retorno.png" alt="Icono de regresar" class="return-icon">
+
     </header>
     <main class="main">
         <form class="main-hero">
@@ -27,20 +23,39 @@
                 <input type="text" name="usuario" id="user-name" class="input" required>
             </div>
             <div class="container">
-                <label for="user-nickname">Nombre del usuario</label>
+                <label for="user-nickname">Nickname del usuario</label>
                 <input type="text" name="usuario" id="user-nickname" class="input" required>
             </div>
             <div class="container">
                 <label for="user-password">Contraseña</label>
                 <input type="password" name="usuario" id="user-password" class="input" minlength="6" required>
             </div>
+            <div class="avatar-container">
+                <img src="./img/avatares/person1.svg" alt="person1" id="person1" class="avatares-registration">
+                <img src="./img/avatares/person2.svg" alt="person2" id="person2" class="avatares-registration">
+                <img src="./img/avatares/person3.svg" alt="person3" id="person3" class="avatares-registration">
+                <img src="./img/avatares/person4.svg" alt="person4" id="person4" class="avatares-registration">
+                <img src="./img/avatares/person5.svg" alt="person5" id="person5" class="avatares-registration">
+                <img src="./img/avatares/person6.svg" alt="person6" id="person6" class="avatares-registration">
+                <img src="./img/avatares/person7.svg" alt="person7" id="person7" class="avatares-registration">
+            </div>
             <button type="button" class="autenticar-btn">Registrar</button>
         </form>
+
 
         <script type="module" src="./scripts/script-registration.js"></script>
         <script type="module" src="./modules/firebaseConfig.js"></script>
         <script type="module" src="./modules/close-session.js"></script>
     </main>
+    <footer class="footer">
+        <p class="designed-by">Designed by Alexander Blanco</p>
+        <div class="social" id="redesSociales">
+            <a href="https://www.facebook.com/alexander.blanco.7777/" class="social_link facebook"></a>
+            <a href="https://www.instagram.com/blancoamador95/" class="social_link instagram"></a>
+            <a href="https://www.linkedin.com/in/alexander-blanco-amador-a52783198/" class="social_link linkedin"></a>
+            <a href="https://github.com/ablancoa" class="social_link github"></a>
+        </div>
+    </footer>
 </body>
 
 </html>

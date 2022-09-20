@@ -6,12 +6,16 @@ const goToGame = document.querySelector('.goToGame');
 const user = document.getElementById('user-nick-name');
 const closeSessionBtn = document.querySelector('.close-session');
 const personalLibrery = document.querySelector('#biblio-personal');
+const imgAvatar = document.getElementById('avatar');
+const userContainer = document.getElementById('user-container');
+const returnBtn = document.querySelector('.return-icon');
 
 // obtencion del usuario
 let userJsonData = sessionStorage.getItem('usuario');
 let userGame = JSON.parse(userJsonData);
 console.log(userGame);
 user.innerHTML = userGame.name;
+imgAvatar.setAttribute('src',userGame.urlImg);
 
 // Ocultar la seccion de libreria personal si no esta registrado
 if ( userGame.nickname == "prueba"){
@@ -20,7 +24,7 @@ if ( userGame.nickname == "prueba"){
 
 // BTN DE SECCION
 import { closeSession } from "../modules/close-session.js";
-user.addEventListener('click', toogleCloseSession);
+userContainer.addEventListener('click', toogleCloseSession);
 closeSessionBtn.addEventListener('click',closeSession);
 function toogleCloseSession(){
   closeSessionBtn.classList.toggle('inactive');
@@ -46,11 +50,12 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //Eventos y constantes del database
-buttonNewWord.addEventListener('click',actualizarData);
-buttonFastGame.addEventListener('click',startFastGame);
-goToGame.addEventListener('click', () => {window.open("./game.html","_self")})
 const docRef = doc(db, "words", `${userGame.nickname}`);
 let docSnap = await getDoc(docRef);
+buttonNewWord.addEventListener('click',actualizarData);
+buttonFastGame.addEventListener('click',startFastGame);
+goToGame.addEventListener('click', () => {window.open("./game.html","_self")});
+returnBtn.addEventListener('click', () => {window.open("./index.html","_self")});
 
 // Consulta a la base de datos
 const wordsRef = collection(db, "words")

@@ -3,6 +3,7 @@ const userNickName = document.querySelector('#user-nickname');
 const userNewPassword = document.querySelector('#user-new-password');
 const userAgainNewPassword = document.querySelector('#user-again-new-password');
 const btnActualizar = document.querySelector('#actualizate-btn');
+const returnBtn = document.querySelector('.return-icon');
 
 // Cargando array de palabras en modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
@@ -22,6 +23,8 @@ const wordsRef = collection(db, "words");
 
 
 btnActualizar.addEventListener('click', actualizarPassword);
+returnBtn.addEventListener('click', () => {window.open("./user-authentication.html","_self")});
+
 
 let userData;
 let userNewData;

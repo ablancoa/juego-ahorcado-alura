@@ -6,16 +6,11 @@
     --color-background: #E5E5E5;
 }
 
-html {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     min-width: 325px;
     box-sizing: border-box;
-
 }
 
 .header {
@@ -24,15 +19,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
-.header img {
-    margin-left: 5rem;
-}
 
 .section-header {
     display: flex;
     align-items: center;
+}
+
+.return-icon {
+    margin-left: 1rem;
+    width: 25px;
+    cursor: pointer;
 }
 
 .user {
@@ -41,6 +40,17 @@ body {
     font-size: 0.8rem;
     cursor: pointer;
 }
+
+.user p {
+    align-items: center;
+}
+
+.avatares {
+    width: 40px;
+    margin-left: 1rem;
+    border-radius: 50%;
+}
+
 
 .close-session {
     position: absolute;
@@ -58,11 +68,12 @@ body {
 
 .main {
     width: 100vw;
-    height: 85vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 325px;
+    margin-bottom: 1rem;
 }
 
 .main-hero {
@@ -115,9 +126,65 @@ body {
 
 }
 
+.avatar-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    width: 80%;
+    align-content: center;
+    margin-bottom: 1rem;
+
+}
+
+.avatares-registration {
+    width: 70%;
+    border-radius: 50%;
+    margin: 0 auto;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
 .inactive {
     visibility: hidden;
 }
+
+/* Footer */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    color: var(--dark-blue-400);
+    bottom: 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.social_link {
+    display: inline-block;
+    margin: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    background-size: 100%;
+}
+
+.social_link.facebook {
+    background-image: url(../img/iconos/facebook.svg);
+}
+
+.social_link.linkedin {
+    background-image: url(../img/iconos/linkedin.svg);
+}
+
+.social_link.instagram {
+    background-image: url(../img/iconos/instagram.svg);
+
+}
+
+.social_link.github {
+    background-image: url(../img/iconos/github.svg);
+}
+
 
 @media (max-width: 600px) {
     .main-hero {
@@ -127,12 +194,35 @@ body {
     .autenticar-btn {
         width: 50%;
     }
+
+    .header:first-child {
+        padding-left: 0;
+    }
+
+    .header {
+        margin: 0 auto;
+    }
+
+    .footer {
+        flex-direction: column;
+    }
+
+
 }
 
 @media (min-width: 601px) {
     .autenticar-btn:hover {
         transition: 0.5s;
         scale: 105%;
+    }
+
+    .avatares-registration:hover {
+        border: solid 1px var(--dark-blue-400);
+    }
+
+    .return-icon:hover {
+        transition: 0.5s;
+        scale: 110%;
     }
 
 }
