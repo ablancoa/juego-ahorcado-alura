@@ -14,7 +14,7 @@ const returnBtn = document.querySelector('.return-icon');
 // obtencion del usuario
 let userJsonData = sessionStorage.getItem('usuario');
 let userGame = JSON.parse(userJsonData);
-user.innerHTML = userGame.name || "prueba";
+user.innerHTML = `Usuario: ${userGame.name}` || "prueba";
 imgAvatar.setAttribute('src',userGame.urlImg);
 
 //------------------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ returnBtn.addEventListener('click', () => {
     window.open("./index.html","_self")
 });
 window.addEventListener('keypress', capturarLetra);
-newGame.addEventListener('click',selectWord);
+newGame.addEventListener('click',selectWord); //iniciar juego
 userContainer.addEventListener('click', toogleCloseSession);
 closeSessionBtn.addEventListener('click',closeSession);
 
@@ -93,7 +93,8 @@ async function selectWord(){
     userData = {
         name: userGame.name,
         nickname: userGame.nickname,
-        palabra: ""
+        palabra: "",
+        urlImg : userGame,urlImg
     }
     console.log(userData.nickname);
     let userJSON = JSON.stringify(userData)
@@ -232,6 +233,7 @@ function verifyIsLetraExist(letra) {
             }
         }
     }
+    console.log(userGame);
 }
 
 

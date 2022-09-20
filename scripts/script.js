@@ -24,7 +24,7 @@ if (!sessionStorage.getItem('usuario')){
 
 let userJsonData = sessionStorage.getItem('usuario');
 let userGame = JSON.parse(userJsonData);
-user.innerHTML = ` ${userGame.name}`;
+user.innerHTML = `Usuario: ${userGame.name}`;
 console.log(userGame);
 imgAvatar.setAttribute('src',userGame.urlImg);
 

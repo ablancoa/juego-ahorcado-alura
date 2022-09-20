@@ -15,7 +15,7 @@ import { closeSession } from "../modules/close-session.js";
 // obtencion del usuario
 let userJsonData = sessionStorage.getItem('usuario');
 let userGame = JSON.parse(userJsonData);
-user.innerHTML = ` ${userGame.name}`;
+user.innerHTML = `Usuario: ${userGame.name}`;
 imgAvatar.setAttribute('src',userGame.urlImg);
 
 console.log(userGame);

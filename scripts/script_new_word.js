@@ -14,7 +14,7 @@ const returnBtn = document.querySelector('.return-icon');
 let userJsonData = sessionStorage.getItem('usuario');
 let userGame = JSON.parse(userJsonData);
 console.log(userGame);
-user.innerHTML = userGame.name;
+user.innerHTML = `Usuario: ${userGame.name}`;
 imgAvatar.setAttribute('src',userGame.urlImg);
 
 // Ocultar la seccion de libreria personal si no esta registrado
@@ -116,7 +116,8 @@ function startFastGame() {
       let userData = {
         name: (docSnap.data()).nombre,
         nickname: (docSnap.data()).nickname,
-        palabra: inputFastWord.value.toUpperCase()
+        palabra: inputFastWord.value.toUpperCase(),
+        urlImg : userGame.urlImg
       }
       let userJSON = JSON.stringify(userData)
       sessionStorage.setItem("usuario", userJSON);
