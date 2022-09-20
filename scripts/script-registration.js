@@ -49,15 +49,16 @@ async function compareData(){
           nickname:  `@${userNickName.value.trim()}`, 
           nombre: userName.value.trim(), 
           contrsena: userPassword.value.trim(),
-          palabras: []});
-        }
+          palabras: []
+        });
         Swal.fire(
           'Buen trabajo!',
           'Usuario registrado!',
-          'Exito'
+          'success'
         )
+      }
         window.open("./user-authentication.html","_self")
-      } 
+    } 
     catch (error) {
       console.log(error);
     }
