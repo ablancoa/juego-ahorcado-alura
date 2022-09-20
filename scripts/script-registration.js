@@ -42,7 +42,7 @@ async function compareData(){
         await setDoc(doc(wordsRef, userNickNameTrim.toUpperCase()), {
           nickname:  `${userNickNameTrim.toUpperCase()}`, 
           nombre: userNameTrim.toUpperCase(), 
-          contrsena: userPasswordTrim.toUpperCase(),
+          contrasena: userPasswordTrim,
           palabra: ['LAPTOP','HOLA','JUEGO', 'CASA', 'FELIZ', 'ESTUDIO', 'CAMA', 'PUERTA', 'TRABAJO', 'SORPRESA', 'AMOR']
         });
         Swal.fire(

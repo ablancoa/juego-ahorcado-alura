@@ -31,33 +31,57 @@ let userData;
 async function authenticate (){
     let userNickNameTrim = userNickName.value.trim();
     let userPasswordTrim = userPassword.value.trim();
-    if (userNickNameTrim != "" && userPasswordTrim != "" && userGame.nickname != userNickNameTrim.toUpperCase()){
-      console.log(userGame.nickname.toUpperCase())
-        const docRef = doc(db, "words", `${userNickNameTrim.toUpperCase()}`);
-        try {
-          const docSnap = await getDoc(docRef);
-          if(docSnap.exists()){
-            Swal.fire(
-                'Buen trabajo!',
-                'Usuario verificado!',
-                'success'
-            )
-            userData = {
-                name: (docSnap.data()).nombre,
-                nickname: (docSnap.data()).nickname,
-                palabra: ""
-            }
-            window.open("./index.html","_self");
+    console.log(userNickNameTrim);
+    console.log(userPasswordTrim);
 
-            let userJSON = JSON.stringify(userData)
-            sessionStorage.setItem("usuario", userJSON);
-          }else{
+    if (userNickNameTrim != "" && userPasswordTrim != "" && userGame.nickname != userNickNameTrim.toUpperCase()){
+      const q = query(wordsRef, where("nickname", "==", `${userNickNameTrim.toUpperCase()}`), where("contrasena", "==", `${userPasswordTrim}`));
+        // const docRef = doc(db, "words", `${userNickNameTrim.toUpperCase()}`);
+        try {
+          const querySnapshot = await getDocs(q);
+          console.log(querySnapshot.docs.length);
+          if (querySnapshot.docs.length == 1){
+            querySnapshot.forEach((doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+              userData = {
+                name: (doc.data()).nombre,
+                nickname: (doc.data()).nickname,
+                palabra : ""
+              }
+              window.open("./index.html","_self");
+
+              let userJSON = JSON.stringify(userData)
+              sessionStorage.setItem("usuario", userJSON);
+            });
+          }  
+          else{
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Usuario no encontrado',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Usuario no encontrado',
             })
-          }; 
+          }
+          // const docSnap = await getDoc(docRef);
+          // if(docSnap.exists()){
+          //   Swal.fire(
+          //       'Buen trabajo!',
+          //       'Usuario verificado!',
+          //       'success'
+          //   )
+          //   userData = {
+          //       name: (docSnap.data()).nombre,
+          //       nickname: (docSnap.data()).nickname,
+          //       palabra: ""
+          //   }
+           
+          // }else{
+          //   Swal.fire({
+          //       icon: 'error',
+          //       title: 'Oops...',
+          //       text: 'Usuario no encontrado',
+          //   })
+          // }; 
         }
         catch (error) {
           console.log(error);
