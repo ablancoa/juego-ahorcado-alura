@@ -104,7 +104,9 @@ function actualizarData (){
 }
 
 // Para juego rapido
+console.log(docSnap.data());
 function startFastGame() {
+  debugger
   if(inputFastWord.value != "" && inputFastWord.value != " "){
     if(!inputFastWord.checkValidity()) {
       Swal.fire({
@@ -119,6 +121,7 @@ function startFastGame() {
         palabra: inputFastWord.value.toUpperCase(),
         urlImg : userGame.urlImg
       }
+      console.log(userData);
       let userJSON = JSON.stringify(userData)
       sessionStorage.setItem("usuario", userJSON);
 

@@ -11,11 +11,13 @@ const imgAvatar = document.getElementById('avatar');
 const userContainer = document.getElementById('user-container');
 const returnBtn = document.querySelector('.return-icon');
 
+
 // obtencion del usuario
 let userJsonData = sessionStorage.getItem('usuario');
 let userGame = JSON.parse(userJsonData);
 user.innerHTML = `Usuario: ${userGame.name}` || "prueba";
 imgAvatar.setAttribute('src',userGame.urlImg);
+console.log(userGame);
 
 //------------------------------------------------------------------------------------------------------------
 // Cargando array de palabras en modules
@@ -25,7 +27,7 @@ import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-f
 
 import {firebaseConfig} from "../modules/firebaseConfig.js"
 import { closeSession } from "../modules/close-session.js";
-    
+ 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
