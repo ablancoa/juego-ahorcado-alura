@@ -17,7 +17,6 @@ let userJsonData = sessionStorage.getItem('usuario');
 let userGame = JSON.parse(userJsonData);
 user.innerHTML = `Usuario: ${userGame.name}` || "prueba";
 imgAvatar.setAttribute('src',userGame.urlImg);
-console.log(userGame);
 
 //------------------------------------------------------------------------------------------------------------
 // Cargando array de palabras en modules
@@ -58,6 +57,7 @@ let secretWord;
 const letrasErrada = []; //Letras equivocadas
 let letrasAcertadas = 0;
 let erroresCometidos = 0;
+let endGame;
 
 
 desistir.addEventListener('click',clear);
@@ -66,10 +66,10 @@ returnBtn.addEventListener('click', () => {
     clear();
     window.open("./index.html","_self")
 });
-window.addEventListener('keypress', capturarLetra);
 newGame.addEventListener('click',selectWord); //iniciar juego
 userContainer.addEventListener('click', toogleCloseSession);
 closeSessionBtn.addEventListener('click',closeSession);
+window.addEventListener('keypress', capturarLetra);
 
 
 // Elegir variable al azar
@@ -96,7 +96,7 @@ async function selectWord(){
         name: userGame.name,
         nickname: userGame.nickname,
         palabra: "",
-        urlImg : userGame,urlImg
+        urlImg : userGame.urlImg
     }
     console.log(userData.nickname);
     let userJSON = JSON.stringify(userData)
@@ -119,6 +119,7 @@ let idLetras = function(){
 // Funcion de crear las letras
 function startNewGame(palabra){
     clear();
+    endGame = false;
     crearTeclado();
     let cantidad = Array.from(palabra);
     let id = 0;
@@ -164,78 +165,81 @@ function clear() {
 }
 
 function crearTeclado() {
-    const letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z",];
 
+    const letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z",];
+    
     letras.forEach(element => {
         const letraTeclado = document.createElement('p')
         letraTeclado.setAttribute('id',element);
         letraTeclado.classList.add('letters')
         letraTeclado.innerText = element
         errorEntrado.appendChild(letraTeclado);
-       
+        
     })
     document.querySelectorAll(".letters").forEach(el => {
         el.addEventListener("click", e => {
             const id = e.target.getAttribute("id");
             verifyIsLetraExist(id);
         });
-    })
-    
-    
+    })      
 }
 
 function verifyIsLetraExist(letra) {
-    let compareId = idLetras();
-    let valueInput;
-    let letraYaIngresada = document.getElementById(letra);
-    letraYaIngresada.classList.add('block-letter')
-    if (letrasErrada.includes(letra)){
-        Swal.fire({
-            icon: 'info',
-            title: 'Error',
-            text: `Letra ya insertada`,
-        }) 
-    }
-    else{
-        //Letra errada ya ingresada
-        if (arrayWord.includes(letra)){
-            for (let i = 0; i < arrayWord.length; i++){
-                if (letra == arrayWord[i]){
-                    valueInput = document.getElementById(compareId[i]);
-                    valueInput.innerText = letra;
-                    letrasAcertadas++
-                    if (letrasAcertadas == idLetras().length){
-                        Swal.fire(
-                            'Buen trabajo!',
-                            'Usted ganó!',
-                            'Exito'
-                        )
+    if (endGame == false){ 
+        let compareId = idLetras();
+        let valueInput;
+        let letraYaIngresada = document.getElementById(letra);
+        letraYaIngresada.classList.add('block-letter')
+        if (letrasErrada.includes(letra)){
+            Swal.fire({
+                icon: 'info',
+                title: 'Error',
+                text: `Letra ya insertada`,
+            }) 
+        }
+        else{
+            //Letra errada ya ingresada
+            if (arrayWord.includes(letra)){
+                for (let i = 0; i < arrayWord.length; i++){
+                    if (letra == arrayWord[i]){
+                        valueInput = document.getElementById(compareId[i]);
+                        valueInput.innerText = letra;
+                        letrasAcertadas++
+                        if (letrasAcertadas == idLetras().length){
+                            Swal.fire(
+                                'Buen trabajo!',
+                                'Usted ganó!',
+                                'Exito'
+                            )
+                            endGame = true;
+                        }
+                        
                     }
                 }
-            }
-            letrasErrada.push(letra);
-        } 
-        else{
-            letrasErrada.push(letra) //Ingresar nueva letra errada
-            // const errorLetra = document.createElement('p');
-            // errorLetra.classList.add('letters');
-            // errorEntrado.appendChild(errorLetra)
-            // errorLetra.innerText = letra;
-            erroresCometidos++    
-            if(erroresCometidos != idImagenes.length){
-                idImagenes[erroresCometidos-1].classList.remove('inactive')
-            }
-            else if(erroresCometidos == idImagenes.length){
-                idImagenes[erroresCometidos-1].classList.remove('inactive')
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: `Usted perdio, la palabra era ${secretWord}`,
-                })  
+                letrasErrada.push(letra);
+            } 
+            else{
+                letrasErrada.push(letra) //Ingresar nueva letra errada
+                erroresCometidos++    
+                if(erroresCometidos != idImagenes.length){
+                    idImagenes[erroresCometidos-1].classList.remove('inactive')
+                }
+                else if(erroresCometidos == idImagenes.length){
+                    idImagenes[erroresCometidos-1].classList.remove('inactive')
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: `Usted perdio, la palabra era ${secretWord}`,
+                    })
+                    endGame = true;
+                }
             }
         }
+        console.log(userGame);
     }
-    console.log(userGame);
+    else{
+        return;
+    }
 }
 
 

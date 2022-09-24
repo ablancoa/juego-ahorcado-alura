@@ -106,7 +106,6 @@ function actualizarData (){
 // Para juego rapido
 console.log(docSnap.data());
 function startFastGame() {
-  debugger
   if(inputFastWord.value != "" && inputFastWord.value != " "){
     if(!inputFastWord.checkValidity()) {
       Swal.fire({
