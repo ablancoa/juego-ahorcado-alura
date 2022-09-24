@@ -5,11 +5,19 @@ Challenge No.2 proposed in the Oracle Next Education program. A collaboration be
 
 ## Tehnologies
 Lis of technologies used in the project
+<<<<<<< HEAD
 * [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
 * [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [JavaScript-ECMAScript6+](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [NPM](https://www.npmjs.com/)
 * [Cloud-Firebase](https://firebase.google.com/?gclid=Cj0KCQjwsrWZBhC4ARIsAGGUJuo_1cIOrGwzpBXxQRki3mSVC5HIKqCa_jO_GfOEoHpp0DBr3GK0w8saAjk6EALw_wcB&gclsrc=aw.ds)
+=======
+*[HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
+*[CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+*[JavaScript-ECMAScript6+](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+*[NPM](https://www.npmjs.com/)
+*[Cloud-Firebase](https://firebase.google.com/?gclid=Cj0KCQjwsrWZBhC4ARIsAGGUJuo_1cIOrGwzpBXxQRki3mSVC5HIKqCa_jO_GfOEoHpp0DBr3GK0w8saAjk6EALw_wcB&gclsrc=aw.ds)
+>>>>>>> 3646813fd06c0b52784a3bf7218bdcfdac6dd249
 Fue diseñado para que tenga la capacidad de ser responsive
 
 ## Description
