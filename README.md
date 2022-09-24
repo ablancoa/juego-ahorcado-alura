@@ -12,20 +12,13 @@ Lis of technologies used in the project
 * [NPM](https://www.npmjs.com/)
 * [Cloud-Firebase](https://firebase.google.com/?gclid=Cj0KCQjwsrWZBhC4ARIsAGGUJuo_1cIOrGwzpBXxQRki3mSVC5HIKqCa_jO_GfOEoHpp0DBr3GK0w8saAjk6EALw_wcB&gclsrc=aw.ds)
 =======
-*[HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
-*[CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
-*[JavaScript-ECMAScript6+](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-*[NPM](https://www.npmjs.com/)
-*[Cloud-Firebase](https://firebase.google.com/?gclid=Cj0KCQjwsrWZBhC4ARIsAGGUJuo_1cIOrGwzpBXxQRki3mSVC5HIKqCa_jO_GfOEoHpp0DBr3GK0w8saAjk6EALw_wcB&gclsrc=aw.ds)
->>>>>>> 3646813fd06c0b52784a3bf7218bdcfdac6dd249
-Fue diseñado para que tenga la capacidad de ser responsive
 
 ## Description
 The game consists of people guessing the words that are randomly suggested.
 Several options are presented on the home screen.
-1- Start game
-2-Add word
-3-Login
+* Start game
+* Add word
+* Login
 ### First screen
 ![image](https://user-images.githubusercontent.com/105893520/192074509-281e15c9-216f-4fc3-a91d-67ceb7e4db22.png)
 Users who do not register in the game will only be able to play with a pre-established database or quick games where they can insert the word.
